@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{nome}} · Advocacia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght%400,500;0,600;1,500&family=Manrope:wght%40400;500;700&display=swap">
+<style>
+:root{
+  --pedra:#191815; --pedra-2:#24221e; --marfim:#f3efe7; --cal:#fbf9f5; --tinta:#1f1d19; --tinta-2:#5d584e;
+  --bronze:#b58a52; --bronze-escuro:#7a5628; --linha:rgba(31,29,25,.16); --linha-clara:rgba(243,239,231,.18);
+  --titulo:"Cormorant Garamond","Iowan Old Style",Georgia,serif; --texto:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --margem:max(20px,calc((100vw - 1180px)/2)); --suave:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font:400 16px/1.65 var(--texto);color:var(--tinta);background:var(--marfim);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--bronze);outline-offset:3px}
+[hidden]{display:none!important}
+.faixa{padding-left:var(--margem);padding-right:var(--margem)}
+.secao{padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(72px,10vw,140px)}
+.rotulo{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-escuro);margin-bottom:22px}
+.rotulo::before{content:"";width:34px;height:1px;background:currentColor}
+.escuro .rotulo{color:var(--bronze)}
+h1,h2,h3,h4{font-family:var(--titulo);font-weight:500;line-height:1.05;text-wrap:balance}
+h2{font-size:clamp(40px,5.6vw,72px);letter-spacing:-.015em}
+h2 em,h1 em{color:var(--bronze)}
+.escuro{background:var(--pedra);color:var(--marfim)}
+
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 28px;border:1px solid transparent;font-weight:700;font-size:14px;text-decoration:none;transition:background-color .2s,color .2s,border-color .2s}
+.botao svg{width:18px;height:18px;transition:transform .25s var(--suave)}
+.botao:hover svg{transform:translateX(4px)}
+.b-bronze{background:var(--bronze);color:var(--pedra)}
+.b-bronze:hover{background:#cda36b}
+.b-pedra{background:var(--pedra);color:var(--marfim)}
+.b-pedra:hover{background:#38342d}
+.b-linha{border-color:currentColor}
+.b-linha:hover{background:rgba(181,138,82,.16)}
+.botao:disabled{opacity:.4;cursor:not-allowed}
+
+/* cabeçalho */
+.topo{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;height:84px;color:var(--marfim);border-bottom:1px solid var(--linha-clara);transition:height .3s var(--suave),background-color .3s}
+.topo.rolou{height:66px;background:rgba(25,24,21,.94);backdrop-filter:blur(10px)}
+.marca{display:flex;align-items:center;gap:14px;text-decoration:none;min-width:0}
+.marca i{display:grid;place-items:center;flex:none;width:40px;height:48px;border:1px solid var(--bronze);border-radius:40px 40px 0 0;font:600 17px/1 var(--titulo);font-style:normal;color:var(--bronze);padding-top:6px}
+.marca span{font:600 20px/1.1 var(--titulo);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:300px}
+.topo nav{display:flex;gap:30px;font-size:13px;font-weight:500}
+.topo nav a{text-decoration:none;opacity:.8;padding:6px 0;background:linear-gradient(var(--bronze),var(--bronze)) left bottom/0 1px no-repeat;transition:background-size .3s,opacity .2s}
+.topo nav a:hover{opacity:1;background-size:100% 1px}
+.topo .botao{min-height:42px;padding:0 20px;font-size:13px}
+
+/* abertura */
+.abertura{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;padding-top:120px;overflow:hidden}
+.abertura__texto{align-self:center;padding-bottom:64px;position:relative;z-index:2}
+.abertura h1{font-size:clamp(52px,7.6vw,112px);letter-spacing:-.025em;line-height:.96;overflow-wrap:anywhere}
+.abertura p.chamada{margin-top:30px;max-width:46ch;font-size:17px;color:rgba(243,239,231,.78)}
+.destaque{margin-top:14px;color:var(--bronze);font-weight:700}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.arco{position:relative;height:min(82svh,780px);align-self:end}
+.arco figure{position:absolute;inset:0 0 0 0;overflow:hidden;border-radius:999px 999px 0 0;clip-path:inset(0 0 0 0 round 999px 999px 0 0)}
+.arco img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.arco figcaption{position:absolute;z-index:1;left:0;right:0;bottom:14px;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,239,231,.8)}
+.arco figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(25,24,21,.75))}
+.arco svg{position:absolute;left:-34px;right:-34px;top:-34px;width:calc(100% + 68px);height:calc(100% + 34px);overflow:visible;pointer-events:none}
+.arco svg path{fill:none;stroke:var(--bronze);stroke-width:1;vector-effect:non-scaling-stroke}
+.js .arco figure{animation:subir 1.3s var(--suave) both}
+.js .arco svg path{stroke-dasharray:1;stroke-dashoffset:1;animation:riscar 1.8s .5s var(--suave) forwards}
+.js .abertura__texto>*{animation:surgir .9s var(--suave) both}
+.js .abertura__texto>*:nth-child(2){animation-delay:.1s}
+.js .abertura__texto>*:nth-child(3){animation-delay:.2s}
+.js .abertura__texto>*:nth-child(4){animation-delay:.3s}
+.js .abertura__texto>*:nth-child(5){animation-delay:.4s}
+@keyframes subir{from{clip-path:inset(100% 0 0 0 round 999px 999px 0 0)}to{clip-path:inset(0 0 0 0 round 999px 999px 0 0)}}
+@keyframes riscar{to{stroke-dashoffset:0}}
+@keyframes surgir{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* manifesto: as palavras acendem com a rolagem */
+.manifesto p{font:500 clamp(34px,5vw,68px)/1.14 var(--titulo);max-width:22ch;margin:0 auto;text-align:center;text-wrap:balance}
+.manifesto span{transition:opacity .25s linear}
+.js .manifesto span{opacity:.14}
+.js .manifesto span.aceso{opacity:1}
+.colunas{display:flex;justify-content:center;gap:14px;margin-top:56px;height:90px}
+.colunas b{width:2px;background:var(--bronze);transform-origin:bottom}
+.js .colunas b{transform:scaleY(0);transition:transform .9s var(--suave)}
+.js .visto .colunas b{transform:scaleY(1)}
+.colunas b:nth-child(2),.colunas b:nth-child(4){transition-delay:.12s}
+.colunas b:nth-child(3){transition-delay:.24s}
+
+/* áreas: pastas que abrem */
+.cabeca{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:end;margin-bottom:56px}
+.cabeca p{color:var(--tinta-2);max-width:46ch}
+.escuro .cabeca p{color:rgba(243,239,231,.7)}
+.pastas{display:flex;height:540px;border:1px solid var(--linha-clara)}
+.pasta{position:relative;flex:0 0 92px;display:flex;overflow:hidden;transition:flex-basis .65s var(--suave),flex-grow .65s var(--suave),background-color .4s;border-right:1px solid var(--linha-clara);min-width:0}
+.pasta:last-child{border-right:0}
+.pasta.aberta{flex:1 1 0;background:var(--marfim);color:var(--tinta)}
+.lombada{flex:0 0 91px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:26px 0}
+.lombada small{font:600 20px var(--titulo);color:var(--bronze)}
+.lombada strong{writing-mode:vertical-rl;transform:rotate(180deg);font:500 28px/1 var(--titulo);white-space:nowrap}
+.pasta:not(.aberta) .lombada:hover{background:var(--pedra-2)}
+.conteudo{flex:1 0 560px;padding:48px 56px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.pasta.aberta .conteudo{opacity:1;visibility:visible;transition-delay:.25s}
+.conteudo h3{font-size:46px;margin-bottom:16px}
+.conteudo p{color:var(--tinta-2);max-width:52ch}
+.conteudo ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;margin:32px 0}
+.conteudo li{padding:13px 0;border-top:1px solid var(--linha);font-weight:500;font-size:14px}
+.conteudo .botao{align-self:flex-start}
+.aviso{margin-top:18px;font-size:12px;opacity:.65}
+
+/* situações */
+.situacoes{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,6vw,88px);align-items:start}
+.frases{list-style:none;border-top:1px solid var(--linha)}
+.frases button{display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;text-align:left;padding:22px 0;border-bottom:1px solid var(--linha);font:500 clamp(24px,2.8vw,34px)/1.2 var(--titulo);transition:padding .35s var(--suave),color .2s}
+.frases button svg{flex:none;width:22px;height:22px;opacity:0;transform:translateX(-10px);transition:.3s var(--suave)}
+.frases button:hover,.frases button[aria-pressed="true"]{color:var(--bronze-escuro);padding-left:14px}
+.frases button[aria-pressed="true"] svg{opacity:1;transform:none}
+.ficha{position:sticky;top:100px;background:var(--cal);border-radius:999px 999px 0 0;padding:120px clamp(28px,4vw,56px) 48px;border:1px solid var(--linha);text-align:center}
+.ficha small{font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--bronze-escuro)}
+.ficha h3{font-size:40px;margin:12px 0 18px}
+.ficha p{color:var(--tinta-2);margin:0 auto 26px;max-width:40ch}
+.ficha ul{list-style:none;text-align:left;margin-bottom:32px}
+.ficha li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--linha);font-size:14px}
+.ficha li::before{content:"";flex:none;width:8px;height:8px;margin-top:8px;border:1px solid var(--bronze-escuro);transform:rotate(45deg)}
+.ficha.troca>*{animation:surgir .45s var(--suave) both}
+
+/* sobre */
+.sobre{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,7vw,110px);align-items:center;background:var(--cal)}
+.retrato{position:relative;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden}
+.retrato img{width:100%;height:112%;object-fit:cover}
+.retrato figcaption{position:absolute;inset:auto 0 0 0;padding:56px 28px 24px;background:linear-gradient(transparent,rgba(25,24,21,.86));color:var(--marfim)}
+.retrato figcaption strong{display:block;font:500 28px/1.15 var(--titulo)}
+.retrato figcaption span{font-size:12px;opacity:.75}
+.sobre>div>p{margin-top:26px;color:var(--tinta-2);max-width:56ch}
+.principios{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;margin-top:44px}
+.principios div{border-top:1px solid var(--tinta);padding:20px 0 26px}
+.principios h4{font-size:26px;margin-bottom:6px}
+.principios p{font-size:14px;color:var(--tinta-2)}
+
+/* etapas */
+.etapas{position:relative;list-style:none;max-width:860px;margin:0 auto}
+.etapas::before,.etapas::after{content:"";position:absolute;left:31px;top:8px;bottom:8px;width:1px;background:var(--linha)}
+.etapas::after{background:var(--bronze-escuro);transform-origin:top;transform:scaleY(var(--p,1))}
+.etapas li{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);gap:36px;padding:34px 0}
+.etapas i{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:76px;background:var(--marfim);border:1px solid var(--linha);border-radius:64px 64px 0 0;font:600 26px var(--titulo);font-style:normal;transition:background-color .4s,color .4s,border-color .4s}
+.etapas li.ativo i{background:var(--pedra);border-color:var(--pedra);color:var(--bronze)}
+.etapas h3{font-size:34px;margin:8px 0}
+.etapas p{color:var(--tinta-2);max-width:54ch}
+
+/* dúvidas */
+.duvidas{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,6vw,90px);background:var(--cal)}
+.perguntas details{border-bottom:1px solid var(--linha)}
+.perguntas details:first-child{border-top:1px solid var(--tinta)}
+.perguntas summary{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:26px 0;list-style:none;cursor:pointer;font:600 25px/1.25 var(--titulo)}
+.perguntas summary::-webkit-details-marker{display:none}
+.perguntas summary::after{content:"+";flex:none;display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--linha);border-radius:50%;font:300 22px var(--texto);transition:transform .35s var(--suave)}
+.perguntas details[open] summary::after{transform:rotate(45deg)}
+.perguntas details p{padding-bottom:28px;color:var(--tinta-2);max-width:62ch}
+.perguntas details[open] p{animation:surgir .4s var(--suave)}
+
+/* local */
+.local{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,90px);align-items:center}
+.local dl{margin:34px 0}
+.local dl div{padding:16px 0;border-top:1px solid var(--linha)}
+.local dt{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-escuro)}
+.local dd{font:500 24px/1.35 var(--titulo);overflow-wrap:anywhere}
+.planta{position:relative;background:var(--pedra);aspect-ratio:7/5;overflow:hidden}
+.planta svg{width:100%;height:100%}
+.planta .rua{fill:none;stroke:var(--linha-clara);stroke-width:1}
+.planta .rota{fill:none;stroke:var(--bronze);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:0}
+.js .planta .rota{stroke-dashoffset:1;transition:stroke-dashoffset 2s var(--suave)}
+.js .visto .planta .rota{stroke-dashoffset:0}
+.planta span{position:absolute;left:24px;bottom:20px;color:var(--marfim);font:500 26px var(--titulo)}
+.planta small{position:absolute;right:20px;top:16px;color:rgba(243,239,231,.55);font-size:11px}
+
+/* triagem */
+.triagem{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,90px)}
+.triagem>div>p{margin-top:24px;color:rgba(243,239,231,.7);max-width:42ch}
+.painel{background:var(--marfim);color:var(--tinta);padding:clamp(24px,4vw,52px);min-height:520px;display:flex;flex-direction:column}
+.progresso{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:36px}
+.progresso span{border-top:2px solid var(--linha);padding-top:10px;font-size:12px;font-weight:700;color:var(--tinta-2);transition:border-color .4s,color .4s}
+.progresso span.feito{border-color:var(--bronze-escuro);color:var(--tinta)}
+.passo{display:flex;flex-direction:column;flex:1}
+.passo.entra{animation:entrar .45s var(--suave)}
+@keyframes entrar{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.passo h3{font-size:36px;margin-bottom:24px}
+.opcoes{display:flex;flex-wrap:wrap;gap:10px}
+.opcoes button{min-height:48px;padding:0 20px;border:1px solid var(--linha);font-weight:500;font-size:14px;transition:.2s}
+.opcoes button:hover{border-color:var(--tinta)}
+.opcoes button[aria-pressed="true"]{background:var(--pedra);border-color:var(--pedra);color:var(--marfim)}
+.campo{display:block;margin-bottom:20px;font-weight:700;font-size:13px}
+.campo input,.campo textarea{display:block;width:100%;margin-top:8px;padding:14px 16px;border:1px solid var(--linha);background:var(--cal);font-weight:400;font-size:16px;resize:vertical}
+.resumo{white-space:pre-wrap;background:var(--cal);border:1px solid var(--linha);padding:20px;font-size:15px;overflow-wrap:anywhere}
+.navega{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:32px}
+.voltar{font-weight:700;font-size:13px;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.nota{font-size:12px;color:var(--tinta-2);margin-top:14px}
+
+footer{padding-top:80px;padding-bottom:40px;border-top:1px solid var(--linha-clara)}
+.fecho{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:56px;border-bottom:1px solid var(--linha-clara)}
+.fecho h2{max-width:14ch}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:28px;font-size:12px;color:rgba(243,239,231,.6)}
+.legal p{max-width:70ch}
+
+.flutuante{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;align-items:center;gap:10px;height:56px;padding:0 22px 0 18px;border-radius:56px;background:#1f7a50;color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .35s var(--suave),opacity .3s}
+.flutuante svg{width:24px;height:24px}
+.flutuante.oculto{opacity:0;transform:translateY(90px);pointer-events:none}
+
+.js .revela{opacity:0;transform:translateY(34px);transition:opacity .8s var(--suave),transform .8s var(--suave)}
+.js .revela.visto{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .topo nav,.topo>.botao{display:none}
+  .abertura{grid-template-columns:minmax(0,1fr);gap:0;padding-top:108px}
+  .abertura__texto{padding-bottom:56px}
+  .arco{height:68svh;margin:34px 14px 0}
+  .arco svg{left:-14px;right:-14px;top:-14px;width:calc(100% + 28px);height:calc(100% + 14px)}
+  .cabeca,.situacoes,.sobre,.duvidas,.local,.triagem{grid-template-columns:minmax(0,1fr)}
+  .pastas{flex-direction:column;height:auto}
+  .pasta,.pasta.aberta{flex:none;flex-direction:column;border-right:0;border-bottom:1px solid var(--linha-clara)}
+  .lombada{flex:none;flex-direction:row;justify-content:flex-start;gap:18px;padding:22px 20px;width:100%}
+  .lombada strong{writing-mode:horizontal-tb;transform:none;white-space:normal;text-align:left}
+  .conteudo{flex:none;padding:6px 20px 32px;display:none}
+  .pasta.aberta .conteudo{display:flex;animation:surgir .5s var(--suave)}
+  .conteudo ul{grid-template-columns:1fr}
+  .conteudo h3{display:none}
+  .ficha{position:static}
+  .retrato{max-width:440px;width:100%;margin:0 auto}
+  .planta{aspect-ratio:1}
+}
+@media (max-width:560px){
+  .principios{grid-template-columns:1fr}
+  .flutuante{width:58px;height:58px;padding:0;justify-content:center}
+  .flutuante span{display:none}
+  .acoes .botao,.navega .botao{width:100%}
+  .etapas li{gap:20px}
+  footer{padding-bottom:100px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+}
+</style>
+</head>
+<body>
+<div id="lead" hidden data-whatsapp="{{whatsapp_link}}" data-foto="{{foto_advogado}}"></div>
+
+<header class="topo faixa">
+  <a class="marca" href="#inicio"><i>{{iniciais}}</i><span data-nome>{{nome}}</span></a>
+  <nav aria-label="Seções">
+    <a href="#areas">Áreas</a><a href="#situacoes">Sua situação</a><a href="#atendimento">Atendimento</a><a href="#duvidas">Dúvidas</a><a href="#local">Onde estamos</a>
+  </nav>
+  <a class="botao b-linha" href="#triagem">Contar meu caso</a>
+</header>
+
+<main id="inicio">
+<section class="abertura escuro faixa">
+  <div class="abertura__texto">
+    <p class="rotulo" data-se="cidade"><span>Advocacia em <span data-v="cidade">{{cidade}}</span></span></p>
+    <h1>Clareza para decidir o <em>próximo passo.</em></h1>
+    <p class="chamada"><strong data-nome>{{nome}}</strong>: orientação jurídica em linguagem direta, para você entender a sua situação e os caminhos previstos em lei.</p>
+    <p class="destaque" data-se="area">Atuação em destaque: <span data-v="area">{{area_destaque}}</span></p>
+    <div class="acoes">
+      <a class="botao b-bronze" href="#triagem">Contar meu caso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
+      <a class="botao b-linha" href="#areas">Ver áreas de atuação</a>
+    </div>
+  </div>
+  <div class="arco">
+    <figure><img id="foto" src="https://images.unsplash.com/photo-1762341104634-998bbee0ccba?auto=format&amp;fit=crop&amp;w=1100&amp;q=75" alt="Foto ilustrativa de uma profissional em um escritório"><figcaption id="legenda">Imagem ilustrativa</figcaption></figure>
+    <svg viewBox="0 0 100 160" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 160V50C0 22 22 0 50 0s50 22 50 50v110"/></svg>
+  </div>
+</section>
+
+<section class="manifesto secao faixa" data-revela>
+  <p data-palavras>Todo problema jurídico começa com uma dúvida. O primeiro trabalho é transformar essa dúvida em um caminho que você consiga entender.</p>
+  <div class="colunas" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b></div>
+</section>
+
+<section id="areas" class="escuro secao faixa">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Áreas de atuação</p><h2>Cada assunto, uma <em>pasta.</em></h2></div>
+    <div><p>Abra para ver os temas mais comuns de cada área.</p><p class="aviso">Exemplos para esta demonstração. As áreas são definidas pelo escritório.</p></div>
+  </div>
+  <div class="pastas revela" id="pastas"></div>
+</section>
+
+<section id="situacoes" class="secao faixa">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Sua situação</p><h2>O que está <em>acontecendo?</em></h2></div>
+    <p>Escolha a frase mais próxima. Você vê a área relacionada e o que vale separar antes da conversa.</p>
+  </div>
+  <div class="situacoes">
+    <ul class="frases revela" id="frases"></ul>
+    <article class="ficha" id="ficha" aria-live="polite"></article>
+  </div>
+</section>
+
+<section class="sobre secao faixa">
+  <figure class="retrato revela">
+    <img data-paralaxe src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&amp;fit=crop&amp;w=900&amp;q=72" alt="Foto ilustrativa de uma pessoa analisando um documento" loading="lazy">
+    <figcaption><strong data-nome>{{nome}}</strong><span>Imagem ilustrativa</span></figcaption>
+  </figure>
+  <div class="revela">
+    <p class="rotulo">Forma de trabalhar</p>
+    <h2>Rigor no direito, <em>simplicidade</em> na conversa.</h2>
+    <p>Um bom atendimento jurídico explica o cenário sem rodeios: o que a lei prevê, o que depende de prova e quais são os próximos passos possíveis.</p>
+    <div class="principios">
+      <div><h4>Escuta</h4><p>O caso começa pela sua história, com tempo para os detalhes que importam.</p></div>
+      <div><h4>Linguagem clara</h4><p>Termos técnicos são explicados, para que a decisão seja consciente.</p></div>
+      <div><h4>Sigilo</h4><p>O que é conversado fica protegido pelo dever de sigilo profissional.</p></div>
+      <div><h4>Transparência</h4><p>Riscos, prazos e limites são apresentados desde o começo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="atendimento" class="secao faixa">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Atendimento</p><h2>Do primeiro contato ao <em>acompanhamento.</em></h2></div>
+    <p>Quatro etapas, para você saber o que esperar.</p>
+  </div>
+  <ol class="etapas" id="etapas">
+    <li><i>1</i><div class="revela"><h3>Primeiro contato</h3><p>Você envia um resumo do assunto e combina o melhor horário e o formato da conversa.</p></div></li>
+    <li><i>2</i><div class="revela"><h3>Conversa e documentos</h3><p>Os fatos são organizados e é indicado o que precisa ser reunido para a análise.</p></div></li>
+    <li><i>3</i><div class="revela"><h3>Análise e orientação</h3><p>Você recebe uma explicação das possibilidades, dos riscos e do que a lei prevê para o caso.</p></div></li>
+    <li><i>4</i><div class="revela"><h3>Acompanhamento</h3><p>Se houver contratação, cada movimento é comunicado, com o que muda e o que vem depois.</p></div></li>
+  </ol>
+</section>
+
+<section id="duvidas" class="duvidas secao faixa">
+  <div class="revela"><p class="rotulo">Dúvidas frequentes</p><h2>Antes de falar com um <em>advogado.</em></h2></div>
+  <div class="perguntas revela">
+    <details open><summary>Que documentos devo separar?</summary><p>Documento de identificação e tudo o que se relacione ao assunto: contratos, comprovantes, mensagens e notificações. A lista exata depende do caso.</p></details>
+    <details><summary>Posso ser atendido à distância?</summary><p>Muitos assuntos podem ser tratados por vídeo ou telefone. Confirme a disponibilidade no primeiro contato.</p></details>
+    <details><summary>O que eu contar fica em sigilo?</summary><p>Sim. O sigilo profissional é um dever da advocacia e vale também para a conversa inicial.</p></details>
+    <details><summary>Existe prazo para procurar ajuda?</summary><p>Muitos direitos têm prazo para serem exercidos. Por isso, vale buscar orientação assim que a questão surgir.</p></details>
+    <details><summary>Já há garantia de resultado?</summary><p>Não. Nenhum profissional pode garantir o resultado de um processo. A orientação explica cenários e riscos.</p></details>
+  </div>
+</section>
+
+<section id="local" class="local secao faixa" data-revela>
+  <div class="revela">
+    <p class="rotulo">Onde estamos</p>
+    <h2>Endereço e <em>contato.</em></h2>
+    <dl>
+      <div data-se="endereco"><dt>Endereço</dt><dd data-v="endereco">{{endereco}}</dd></div>
+      <div data-se="cidade"><dt>Cidade</dt><dd data-v="cidade">{{cidade}}</dd></div>
+      <div data-se="telefone"><dt>Telefone</dt><dd data-v="telefone">{{telefone}}</dd></div>
+    </dl>
+    <a class="botao b-pedra" data-link href="{{maps_link}}" target="_blank" rel="noopener">Ver no mapa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+  <div class="planta revela">
+    <svg viewBox="0 0 700 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path class="rua" d="M0 90H700M0 190H700M0 320H700M0 430H700M110 0V500M250 0V500M430 0V500M590 0V500M0 500L300 0M360 500L700 120"/>
+      <path class="rota" pathLength="1" d="M110 430V320H250V190H430V150"/>
+      <g transform="translate(430 120)" fill="none" stroke="#b58a52" stroke-width="2"><path d="M-22 32V-4a22 22 0 0 1 44 0v36z" fill="#191815"/><circle cy="-2" r="5" fill="#b58a52"/></g>
+    </svg>
+    <small>Ilustração sem escala</small>
+    <span data-v="cidade">{{cidade}}</span>
+  </div>
+</section>
+
+<section id="triagem" class="triagem escuro secao faixa">
+  <div class="revela">
+    <p class="rotulo">Triagem</p>
+    <h2>Conte o seu caso em <em>três passos.</em></h2>
+    <p>Organize o essencial antes da conversa. Nada é enviado sem você confirmar.</p>
+  </div>
+  <div class="painel revela">
+    <div class="progresso" aria-hidden="true"><span class="feito">1 · Assunto</span><span>2 · Relato</span><span>3 · Revisão</span></div>
+    <div class="passo" data-passo="0">
+      <h3>Sobre o que é?</h3>
+      <div class="opcoes" id="assuntos"></div>
+      <div class="navega"><span></span><button class="botao b-pedra" type="button" data-ir="1" id="avancar0" disabled>Continuar</button></div>
+    </div>
+    <div class="passo" data-passo="1" hidden>
+      <h3>Conte em poucas linhas</h3>
+      <label class="campo">Seu nome<input id="nome" type="text" autocomplete="name" maxlength="80" placeholder="Como podemos chamar você?"></label>
+      <label class="campo">O que aconteceu<textarea id="relato" rows="5" maxlength="600" placeholder="Não precisa ter todos os detalhes agora."></textarea></label>
+      <div class="navega"><button class="voltar" type="button" data-ir="0">Voltar</button><button class="botao b-pedra" type="button" data-ir="2" id="avancar1" disabled>Revisar</button></div>
+    </div>
+    <div class="passo" data-passo="2" hidden>
+      <h3>Confira a mensagem</h3>
+      <p class="resumo" id="resumo"></p>
+      <p class="nota" id="nota">O botão abre o WhatsApp com este texto. Você ainda decide se envia.</p>
+      <div class="navega"><button class="voltar" type="button" data-ir="1">Editar</button><a class="botao b-bronze" id="enviar" target="_blank" rel="noopener">Abrir no WhatsApp</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="escuro faixa">
+  <div class="fecho">
+    <h2><span data-nome>{{nome}}</span></h2>
+    <a class="botao b-bronze" href="#triagem">Contar meu caso</a>
+  </div>
+  <div class="legal">
+    <p>Prévia demonstrativa criada para apresentação. Este não é o site oficial do escritório. Conteúdo informativo; imagens ilustrativas (Unsplash).</p>
+    <span>{{ano}}</span>
+  </div>
+</footer>
+
+<a class="flutuante" data-link href="{{whatsapp_link}}" target="_blank" rel="noopener" aria-label="Conversar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 11.6a8.2 8.2 0 0 1-12.1 7.2L3.5 20l1.3-4.4a8.2 8.2 0 1 1 15.4-4Z"/><path d="M8.5 8.5c0 3.6 3.4 7 7 7l1-1.6-2.4-1.2-.9 1c-1.5-.6-2.8-1.9-3.4-3.4l1-.9L9.6 7z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  var raiz=document.documentElement;
+  raiz.classList.add("js");
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var calmo=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var lead=$("#lead").dataset;
+  var web=function(v){return /^https?:\/\//i.test(v||"")};
+
+  /* dados do lead: o que vier vazio some */
+  $$("[data-nome]").forEach(function(e){var c=e.textContent.split("|")[0].trim(); if(c) e.textContent=c});
+  $$("[data-se]").forEach(function(e){var v=e.querySelector("[data-v]"); if(!v||!v.textContent.trim()) e.hidden=true});
+  $$("[data-link]").forEach(function(a){if(!web(a.getAttribute("href"))) a.hidden=true});
+  if(web(lead.foto)){var f=$("#foto"); f.src=lead.foto; f.alt=$(".marca span").textContent; $("#legenda").hidden=true}
+
+  var AREAS=[
+    {n:"Trabalhista",t:"Direito do Trabalho",d:"Relações entre quem trabalha e quem contrata, durante e depois do contrato.",l:["Rescisão e verbas","Horas extras e jornada","Reconhecimento de vínculo","Assédio no trabalho","Acidente e saúde","FGTS e seguro-desemprego"]},
+    {n:"Família",t:"Família e Sucessões",d:"Momentos delicados que pedem cuidado, organização e acordo sempre que possível.",l:["Divórcio","Guarda e convivência","Pensão alimentícia","União estável","Inventário","Planejamento sucessório"]},
+    {n:"Cível",t:"Cível e Consumidor",d:"Contratos, cobranças e relações de consumo do dia a dia.",l:["Revisão de contratos","Cobrança indevida","Nome negativado","Indenizações","Aluguel e imóveis","Problemas com compras"]},
+    {n:"Previdência",t:"Previdenciário",d:"Benefícios junto ao INSS, do pedido à revisão.",l:["Aposentadorias","Benefício por incapacidade","Pensão por morte","BPC/LOAS","Revisão de benefício","Tempo de contribuição"]}
+  ];
+  var CASOS=[
+    {f:"Fui demitido e não sei se recebi certo",a:0,d:["Carteira de trabalho","Termo de rescisão e holerites","Extrato do FGTS"]},
+    {f:"Quero me separar",a:1,d:["Certidão de casamento ou prova da união","Documentos dos filhos","Relação de bens"]},
+    {f:"Preciso fazer um inventário",a:1,d:["Certidão de óbito","Documentos dos herdeiros","Documentos dos bens"]},
+    {f:"Meu nome foi negativado indevidamente",a:2,d:["Consulta com a negativação","Comprovantes de pagamento","Protocolos de atendimento"]},
+    {f:"Assinei um contrato que não está sendo cumprido",a:2,d:["Contrato assinado","Mensagens e e-mails","Comprovantes"]},
+    {f:"O INSS negou o meu pedido",a:3,d:["Carta de indeferimento","Extrato do CNIS","Laudos e exames, se houver"]}
+  ];
+  var seta='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>';
+  var assunto="";
+
+  /* pastas */
+  var pastas=$("#pastas");
+  AREAS.forEach(function(a,i){
+    pastas.insertAdjacentHTML("beforeend",'<div class="pasta'+(i?"":" aberta")+'"><button class="lombada" type="button" aria-expanded="'+!i+'" aria-controls="area'+i+'"><small>0'+(i+1)+'</small><strong>'+a.n+'</strong></button><div class="conteudo" id="area'+i+'"><div><h3>'+a.t+'</h3><p>'+a.d+'</p><ul>'+a.l.map(function(x){return"<li>"+x+"</li>"}).join("")+'</ul></div><a class="botao b-pedra" href="#triagem" data-assunto="'+a.t+'">Falar sobre este assunto '+seta+'</a></div></div>');
+  });
+  function abrir(i){$$(".pasta").forEach(function(p,j){p.classList.toggle("aberta",i===j); p.querySelector(".lombada").setAttribute("aria-expanded",i===j)})}
+  $$(".lombada").forEach(function(b,i){b.addEventListener("click",function(){abrir(i)})});
+
+  /* situações */
+  var frases=$("#frases"), ficha=$("#ficha");
+  CASOS.forEach(function(c,i){frases.insertAdjacentHTML("beforeend",'<li><button type="button" aria-pressed="false"><span>'+c.f+'</span>'+seta+'</button></li>')});
+  function mostrar(i){
+    var c=CASOS[i], a=AREAS[c.a];
+    $$("#frases button").forEach(function(b,j){b.setAttribute("aria-pressed",i===j)});
+    ficha.innerHTML='<small>Área relacionada</small><h3>'+a.t+'</h3><p>Vale separar antes da conversa:</p><ul>'+c.d.map(function(x){return"<li>"+x+"</li>"}).join("")+'</ul><a class="botao b-pedra" href="#triagem" data-assunto="'+a.t+'">Contar meu caso '+seta+'</a>';
+    ficha.classList.remove("troca"); void ficha.offsetWidth; ficha.classList.add("troca");
+  }
+  $$("#frases button").forEach(function(b,i){b.addEventListener("click",function(){mostrar(i); if(innerWidth<=960) ficha.scrollIntoView({block:"nearest",behavior:calmo?"auto":"smooth"})})});
+  mostrar(0);
+
+  /* triagem */
+  var caixa=$("#assuntos");
+  AREAS.map(function(a){return a.t}).concat("Outro assunto").forEach(function(t){caixa.insertAdjacentHTML("beforeend",'<button type="button" aria-pressed="false">'+t+'</button>')});
+  function escolher(t){assunto=t; $$("#assuntos button").forEach(function(b){b.setAttribute("aria-pressed",b.textContent===t)}); $("#avancar0").disabled=false}
+  caixa.addEventListener("click",function(e){var b=e.target.closest("button"); if(b) escolher(b.textContent)});
+  document.addEventListener("click",function(e){var a=e.target.closest("[data-assunto]"); if(a){escolher(a.dataset.assunto); passo(0)}});
+  function validar(){$("#avancar1").disabled=!($("#nome").value.trim()&&$("#relato").value.trim())}
+  ["#nome","#relato"].forEach(function(s){$(s).addEventListener("input",validar)});
+  function passo(n){
+    $$(".passo").forEach(function(p,i){p.hidden=i!==n; p.classList.toggle("entra",i===n)});
+    $$(".progresso span").forEach(function(s,i){s.classList.toggle("feito",i<=n)});
+    if(n===2){
+      var texto="Olá! Meu nome é "+$("#nome").value.trim()+".\nAssunto: "+assunto+".\n\n"+$("#relato").value.trim();
+      $("#resumo").textContent=texto;
+      var env=$("#enviar");
+      if(web(lead.whatsapp)) env.href=lead.whatsapp+"?text="+encodeURIComponent(texto);
+      else{env.hidden=true; $("#nota").textContent="Demonstração: este escritório ainda não tem WhatsApp cadastrado."}
+    }
+  }
+  $$("[data-ir]").forEach(function(b){b.addEventListener("click",function(){passo(+b.dataset.ir)})});
+
+  /* palavras do manifesto */
+  var p=$("[data-palavras]");
+  p.innerHTML=p.textContent.split(" ").map(function(w){return"<span>"+w+"</span>"}).join(" ");
+  var palavras=$$("[data-palavras] span");
+
+  /* entrada das seções */
+  var olho=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visto"); olho.unobserve(e.target)}})},{threshold:.12});
+  $$(".revela,[data-revela]").forEach(function(e){olho.observe(e)});
+
+  /* efeitos ligados à rolagem */
+  var topo=$(".topo"), etapas=$("#etapas"), flut=$(".flutuante"), pendente=false;
+  var limite=function(v){return Math.max(0,Math.min(1,v))};
+  function quadro(){
+    pendente=false;
+    var h=innerHeight;
+    topo.classList.toggle("rolou",scrollY>40);
+    var r=p.getBoundingClientRect(), n=Math.round(limite((h*.85-r.top)/(r.height+h*.3))*palavras.length);
+    palavras.forEach(function(s,i){s.classList.toggle("aceso",calmo||i<n)});
+    var e=etapas.getBoundingClientRect(), q=calmo?1:limite((h*.65-e.top)/e.height);
+    etapas.style.setProperty("--p",q);
+    $$("#etapas li").forEach(function(li){li.classList.toggle("ativo",li.offsetTop<=q*etapas.offsetHeight)});
+    if(!calmo) $$("[data-paralaxe]").forEach(function(img){var b=img.parentElement.getBoundingClientRect(); if(b.bottom>0&&b.top<h) img.style.transform="translateY("+(-limite((h-b.top)/(h+b.height))*10)+"%)"});
+    var t=$("#triagem").getBoundingClientRect();
+    flut.classList.toggle("oculto",t.top<h*.6&&t.bottom>h*.4);
+  }
+  function pedir(){if(!pendente){pendente=true; requestAnimationFrame(quadro)}}
+  addEventListener("scroll",pedir,{passive:true}); addEventListener("resize",pedir); quadro();
+})();
+</script>
+</body>
+</html>

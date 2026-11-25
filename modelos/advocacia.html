@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{nome}} · Advocacia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght%40400;500;600&family=Newsreader:opsz,wght%406..72,400;6..72,500&display=swap">
+<style>
+  :root {
+    --tinta: #12161f;
+    --tinta-2: #4a5262;
+    --papel: #ffffff;
+    --nevoa: #f1f3f6;
+    --linha: #d9dde4;
+    --marinho: #0f2340;
+    --marinho-claro: #b9c6dc;
+    --titulo: "Newsreader", "Iowan Old Style", Georgia, serif;
+    --texto: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --margem: clamp(20px, 5vw, 56px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font: 400 17px/1.6 var(--texto); color: var(--tinta); background: var(--papel); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid #3b7ddd; outline-offset: 3px; }
+  .faixa { padding-left: max(var(--margem), calc((100% - 1120px) / 2)); padding-right: max(var(--margem), calc((100% - 1120px) / 2)); }
+
+  /* Campos sem dado somem junto com o rótulo */
+  a[href=""], .opcional:has(.v:empty), .v:empty { display: none !important; }
+
+  /* Abertura */
+  .abertura { background: var(--marinho); color: #fff; }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.16); }
+  .sigla { font: 500 22px/1 var(--titulo); letter-spacing: .08em; }
+  .barra nav { display: flex; gap: 28px; font-size: 15px; }
+  .barra nav a { text-decoration: none; color: var(--marinho-claro); }
+  .barra nav a:hover { color: #fff; }
+  .herói { padding-top: clamp(56px, 9vw, 112px); padding-bottom: clamp(48px, 7vw, 88px); }
+  .local { font-size: 15px; color: var(--marinho-claro); margin-bottom: 20px; }
+  h1 { font: 400 clamp(36px, 6vw, 68px)/1.08 var(--titulo); letter-spacing: -.015em; max-width: 19ch; text-wrap: balance; overflow-wrap: anywhere; }
+  .resumo { margin-top: 28px; max-width: 54ch; font-size: clamp(17px, 2vw, 20px); color: #dce3ef; text-wrap: pretty; }
+  .destaque { margin-top: 16px; font-weight: 500; color: #fff; }
+  .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+  .botao { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border: 1px solid transparent; border-radius: 4px; font-weight: 600; font-size: 16px; text-decoration: none; transition: background-color .15s, border-color .15s; }
+  .botao-claro { background: #fff; color: var(--marinho); }
+  .botao-claro:hover { background: var(--marinho-claro); }
+  .botao-borda { border-color: rgba(255,255,255,.4); color: #fff; }
+  .botao-borda:hover { border-color: #fff; }
+
+  /* Seções */
+  section { padding-top: clamp(56px, 8vw, 104px); padding-bottom: clamp(56px, 8vw, 104px); }
+  .duas { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 5vw, 72px); }
+  h2 { font: 500 clamp(28px, 3.4vw, 40px)/1.15 var(--titulo); text-wrap: balance; }
+  .nota-secao { margin-top: 14px; font-size: 15px; color: var(--tinta-2); max-width: 34ch; }
+
+  .areas { list-style: none; border-top: 1px solid var(--tinta); }
+  .areas li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--linha); }
+  h3 { font: 500 23px/1.25 var(--titulo); }
+  .areas p { color: var(--tinta-2); font-size: 16px; }
+
+  .atendimento { background: var(--nevoa); }
+  .passos { list-style: none; counter-reset: passo; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .passos li { counter-increment: passo; border-top: 2px solid var(--marinho); padding-top: 18px; }
+  .passos li::before { content: counter(passo); display: block; font: 400 40px/1 var(--titulo); color: var(--marinho); margin-bottom: 20px; }
+  .passos h3 { font-size: 20px; margin-bottom: 8px; }
+  .passos p { color: var(--tinta-2); font-size: 15px; }
+
+  .ficha { border-top: 1px solid var(--tinta); }
+  .ficha .linha { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--linha); }
+  .ficha dt { font-size: 15px; color: var(--tinta-2); }
+  .ficha dd { font-size: 19px; overflow-wrap: anywhere; }
+  .contato-acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .botao-cheio { background: var(--marinho); color: #fff; }
+  .botao-cheio:hover { background: #1b3a66; }
+  .botao-linha { border-color: var(--marinho); color: var(--marinho); }
+  .botao-linha:hover { background: var(--nevoa); }
+
+  footer { background: var(--marinho); color: var(--marinho-claro); padding-top: 40px; padding-bottom: 40px; font-size: 14px; }
+  footer strong { display: block; color: #fff; font: 500 20px/1.3 var(--titulo); margin-bottom: 12px; }
+  footer p { max-width: 70ch; }
+  .aviso { margin-top: 12px; }
+
+  @media (max-width: 760px) {
+    .barra nav { display: none; }
+    .duas, .areas li, .passos { grid-template-columns: minmax(0, 1fr); }
+    .areas li { gap: 8px; }
+    .ficha .linha { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .botao { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .botao { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="abertura">
+  <div class="barra faixa">
+    <span class="sigla">{{iniciais}}</span>
+    <nav aria-label="Seções">
+      <a href="#areas">Áreas de atuação</a>
+      <a href="#atendimento">Atendimento</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+  <div class="herói faixa">
+    <p class="local opcional">Advocacia em <span class="v">{{cidade}}</span></p>
+    <h1 data-nome>{{nome}}</h1>
+    <p class="resumo">Orientação jurídica com linguagem clara, para você entender a sua situação e os caminhos previstos em lei.</p>
+    <p class="resumo destaque opcional">Atuação em destaque: <span class="v">{{area_destaque}}</span></p>
+    <div class="acoes">
+      <a class="botao botao-claro" href="{{whatsapp_link}}" target="_blank" rel="noopener">Conversar pelo WhatsApp</a>
+      <a class="botao botao-borda" href="#areas">Ver áreas de atuação</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="areas" class="faixa">
+    <div class="duas">
+      <div>
+        <h2>Áreas de atuação</h2>
+        <p class="nota-secao">Exemplos para esta demonstração. As áreas são definidas pelo escritório.</p>
+      </div>
+      <ul class="areas">
+        <li><h3>Direito do Trabalho</h3><p>Relações de emprego, rescisão, jornada, verbas trabalhistas e saúde no trabalho.</p></li>
+        <li><h3>Família e Sucessões</h3><p>Divórcio, guarda, pensão alimentícia, inventário e planejamento sucessório.</p></li>
+        <li><h3>Cível e Consumidor</h3><p>Contratos, cobranças, responsabilidade civil e relações de consumo.</p></li>
+        <li><h3>Previdenciário</h3><p>Aposentadorias, benefícios por incapacidade, pensões e revisão junto ao INSS.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="atendimento" class="atendimento faixa">
+    <div class="duas">
+      <div><h2>Como funciona o primeiro atendimento</h2></div>
+      <ol class="passos">
+        <li><h3>Contato</h3><p>Você envia uma mensagem com um resumo do assunto e combina o melhor horário.</p></li>
+        <li><h3>Conversa</h3><p>O caso é ouvido com atenção, de forma presencial ou à distância, com sigilo profissional.</p></li>
+        <li><h3>Orientação</h3><p>Você recebe a indicação dos documentos necessários e das possibilidades para o seu caso.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contato" class="faixa">
+    <div class="duas">
+      <div><h2>Contato e endereço</h2></div>
+      <div>
+        <dl class="ficha">
+          <div class="linha opcional"><dt>Endereço</dt><dd class="v">{{endereco}}</dd></div>
+          <div class="linha opcional"><dt>Cidade</dt><dd class="v">{{cidade}}</dd></div>
+          <div class="linha opcional"><dt>Telefone</dt><dd class="v">{{telefone}}</dd></div>
+        </dl>
+        <div class="contato-acoes">
+          <a class="botao botao-cheio" href="{{whatsapp_link}}" target="_blank" rel="noopener">Enviar mensagem</a>
+          <a class="botao botao-linha" href="{{maps_link}}" target="_blank" rel="noopener">Ver no mapa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="faixa">
+  <strong data-nome>{{nome}}</strong>
+  <p>Conteúdo de caráter exclusivamente informativo.</p>
+  <p class="aviso">Prévia demonstrativa criada para apresentação. Este não é o site oficial do escritório. {{ano}}</p>
+</footer>
+
+<script>
+  // Nomes do Google Maps costumam trazer palavras-chave depois de "|": mostra só o nome.
+  document.querySelectorAll("[data-nome]").forEach(function (el) {
+    var curto = el.textContent.split("|")[0].trim();
+    if (curto) el.textContent = curto;
+  });
+</script>
+</body>
+</html>
