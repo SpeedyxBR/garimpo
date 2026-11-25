@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Psicoterapia individual</title>
+  <desc id="desc">Mulher sentada confortavelmente em uma poltrona durante uma conversa de psicoterapia.</desc>
+  <defs>
+    <linearGradient id="paper" x1="58" y1="22" x2="584" y2="408" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBF8F3"/>
+      <stop offset="1" stop-color="#EEE5DA"/>
+    </linearGradient>
+    <linearGradient id="chair" x1="117" y1="129" x2="386" y2="347" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7EFE7"/>
+      <stop offset="1" stop-color="#E5D5C6"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="82" y1="334" x2="565" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D5B27A"/>
+      <stop offset=".52" stop-color="#A56D24"/>
+      <stop offset="1" stop-color="#D5B27A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="420" fill="url(#paper)"/>
+  <path d="M-24 339C103 286 190 358 310 316s179-137 356-106" fill="none" stroke="#D9D0C6" stroke-width="1.2"/>
+  <path d="M452-18c-43 105 21 154-24 237-42 77-119 117-97 222" fill="none" stroke="#E2DAD1" stroke-width="1"/>
+
+  <path d="M109 325V204c0-59 43-107 97-107h74c54 0 98 48 98 107v121Z" fill="url(#chair)" stroke="#D5B27A" stroke-width="1.8"/>
+  <path d="M137 325v-78c0-32 25-58 56-58h102c31 0 56 26 56 58v78" fill="#FFFDF9" fill-opacity=".44" stroke="#DCC8B5" stroke-width="1.4"/>
+  <path d="M124 325h241M142 325l-5 25M350 325l5 25" stroke="#9A641F" stroke-width="2" stroke-linecap="round"/>
+
+  <path d="M196 210c-15-19-23-42-20-66 4-33 28-58 60-60 35-2 64 23 69 59 4 26-4 51-20 70l-17-16-58 13Z" fill="#5B4438"/>
+  <circle cx="190" cy="151" r="14" fill="#5B4438"/>
+  <circle cx="194" cy="179" r="17" fill="#5B4438"/>
+  <circle cx="211" cy="201" r="15" fill="#5B4438"/>
+  <circle cx="288" cy="154" r="16" fill="#5B4438"/>
+  <circle cx="284" cy="184" r="17" fill="#5B4438"/>
+  <circle cx="268" cy="207" r="15" fill="#5B4438"/>
+  <path d="M222 109c-21 6-35 26-34 49 1 16 8 29 20 38l-8 28 66 4-9-33c14-10 23-27 21-46-3-29-29-48-56-40Z" fill="#B97856" stroke="#24231F" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M188 153c2-34 22-57 52-59 27-2 49 15 56 42-18-3-35-13-50-29-10 20-29 35-58 46Z" fill="#5B4438"/>
+  <path d="M226 158c4-3 9-3 13 0M252 157c4-3 9-3 13 0M244 164l-2 9 7 1M232 183c10 7 21 7 31-1" fill="none" stroke="#69412F" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="233" cy="159" r="1.7" fill="#3B302B"/>
+  <circle cx="259" cy="158" r="1.7" fill="#3B302B"/>
+  <circle cx="217" cy="176" r="1.2" fill="#8D543D"/>
+  <circle cx="222" cy="179" r="1.2" fill="#8D543D"/>
+  <circle cx="270" cy="176" r="1.2" fill="#8D543D"/>
+  <circle cx="275" cy="173" r="1.2" fill="#8D543D"/>
+  <path d="M209 196c13 11 34 14 49-1" fill="none" stroke="#24231F" stroke-width="1.7"/>
+
+  <path d="M198 218c19-12 49-12 70 0 17 10 27 28 28 49l2 43H172l3-42c1-21 9-39 23-50Z" fill="#A56D24" fill-opacity=".82" stroke="#24231F" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M207 214c3 17 14 27 31 27 16 0 27-9 31-25" fill="none" stroke="#FFF9F1" stroke-width="2" stroke-linecap="round"/>
+  <path d="M179 250c-17 13-26 31-28 54M291 251c13 12 22 28 26 48" fill="none" stroke="#24231F" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M151 304c27 7 51 4 73-9 10-6 19-5 28 2l17 13M317 299c-17 9-33 13-49 11" fill="none" stroke="#B97856" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="226" cy="295" r="5" fill="#B97856" stroke="#24231F" stroke-width="1.3"/>
+  <circle cx="270" cy="309" r="5" fill="#B97856" stroke="#24231F" stroke-width="1.3"/>
+  <path d="M187 310c-12 15-19 29-21 42M277 310c15 13 25 27 30 42" fill="none" stroke="#24231F" stroke-width="13" stroke-linecap="round"/>
+  <path d="M158 352h31M296 352h30" stroke="#A56D24" stroke-width="5" stroke-linecap="round"/>
+
+  <path d="M71 349c53-24 91-26 126-11 32 14 57 12 82-7 37-29 55-73 97-72 39 2 54 40 89 28 38-13 48-81 99-111" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="504" cy="113" r="53" fill="#FFFDF9" fill-opacity=".62" stroke="#D5B27A" stroke-width="1.4"/>
+  <path d="M504 82v62M473 113h62M483 92l42 42M525 92l-42 42" stroke="#A56D24" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="504" cy="113" r="16" fill="#FBF8F3" stroke="#A56D24" stroke-width="1.7"/>
+  <path d="M463 277c21-8 40 0 49 21M481 273c4-17 15-29 33-35M487 287c15-6 29-2 39 9M487 299v34M469 333h36" fill="none" stroke="#A56D24" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

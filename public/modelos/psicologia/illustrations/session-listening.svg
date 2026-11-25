@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 80 760 280" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustração sobre uma sessão de psicoterapia</title>
+  <desc id="desc">Duas poltronas em diálogo, separadas por uma pequena mesa e conectadas por uma linha dourada.</desc>
+  <defs>
+    <linearGradient id="paper" x1="40" y1="15" x2="720" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F4ED"/>
+      <stop offset="1" stop-color="#E9E0D6"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="92" y1="266" x2="673" y2="198" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D6B47A"/>
+      <stop offset=".52" stop-color="#9C651F"/>
+      <stop offset="1" stop-color="#D6B47A"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="430" fill="url(#paper)"/>
+  <path d="M-30 348c110-83 203-13 307-81s195-168 360-106c67 25 104 9 153-17" fill="none" stroke="#DDD3C8" stroke-width="1.4"/>
+  <path d="M152-28c-43 109 20 154-19 238s-99 117-69 249" fill="none" stroke="#E0D7CE" stroke-width="1.2"/>
+  <path d="M566-20c51 101-24 155 21 246s97 112 60 233" fill="none" stroke="#E0D7CE" stroke-width="1.2"/>
+  <path d="M78 344V236c0-54 41-98 92-98h45c51 0 92 44 92 98v108" fill="#FFFDF9" fill-opacity=".76" stroke="#24231F" stroke-width="2.8"/>
+  <path d="M102 342v-69c0-35 26-63 59-63h63c33 0 59 28 59 63v69" fill="#EFE7DD" stroke="#A56D24" stroke-width="2"/>
+  <path d="M453 344V236c0-54 41-98 92-98h45c51 0 92 44 92 98v108" fill="#FFFDF9" fill-opacity=".76" stroke="#24231F" stroke-width="2.8"/>
+  <path d="M477 342v-69c0-35 26-63 59-63h63c33 0 59 28 59 63v69" fill="#EFE7DD" stroke="#A56D24" stroke-width="2"/>
+  <ellipse cx="380" cy="306" rx="70" ry="23" fill="#FFFDF9" stroke="#A56D24" stroke-width="2"/>
+  <path d="M337 306v56M423 306v56M329 362h102" stroke="#A56D24" stroke-width="2" stroke-linecap="round"/>
+  <rect x="357" y="286" width="46" height="12" rx="3" fill="#E2D5C5" stroke="#A56D24" stroke-width="1.5"/>
+  <path d="M112 366c84-41 147 18 221-40 28-22 55-26 83-5 69 52 132 1 228 30" fill="none" stroke="url(#gold)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M281 122c24-29 55-43 92-43 38 0 70 16 96 47" fill="none" stroke="#A56D24" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M334 118c8-16 19-24 34-24 15 0 26 8 34 24-9 13-20 23-34 33-14-10-25-20-34-33Z" fill="#FFFDF9" fill-opacity=".75" stroke="#D5B27A" stroke-width="1.8"/>
+</svg>

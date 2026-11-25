@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="stone" x1="40" y1="20" x2="1120" y2="880" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFAF6"/>
+      <stop offset=".46" stop-color="#F1ECE5"/>
+      <stop offset="1" stop-color="#E8DED3"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="translate(290 210) rotate(46) scale(690 540)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".86"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#stone)"/>
+  <rect width="1200" height="900" fill="url(#light)"/>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M-74 158C116 103 202 238 362 190 523 141 523 17 702 49c178 32 203 189 392 151 79-16 127-65 193-88" stroke="#B9B0A6" stroke-opacity=".33" stroke-width="3"/>
+    <path d="M-65 167C127 110 214 251 370 200 528 149 540 31 705 60c173 30 203 180 386 146 82-15 132-63 199-84" stroke="#FFFFFF" stroke-opacity=".72" stroke-width="6" filter="url(#soft)"/>
+
+    <path d="M198-68c-42 157 117 231 72 382-43 145-208 178-172 347 27 127 148 159 154 310" stroke="#A59D93" stroke-opacity=".23" stroke-width="2.4"/>
+    <path d="M214-63c-39 151 115 225 72 375-41 143-197 181-163 339 25 119 137 159 146 301" stroke="#A56D24" stroke-opacity=".22" stroke-width="1.8"/>
+
+    <path d="M1265 372c-165-51-242 46-371 33-154-15-170-176-333-177-160-1-202 142-348 147-100 4-160-53-267-22" stroke="#B3AAA0" stroke-opacity=".31" stroke-width="3.2"/>
+    <path d="M1266 386c-165-52-246 40-373 29-156-13-176-168-332-171-155-2-205 136-351 143-99 5-160-47-269-16" stroke="#FFFFFF" stroke-opacity=".66" stroke-width="7" filter="url(#soft)"/>
+
+    <path d="M1091-40c-93 119-26 216-102 325-71 101-192 98-231 225-43 140 81 214 7 364" stroke="#A56D24" stroke-opacity=".2" stroke-width="2"/>
+    <path d="M1105-36c-87 120-20 216-97 330-70 103-187 103-222 226-40 137 78 211 12 352" stroke="#B8AFA5" stroke-opacity=".28" stroke-width="2.5"/>
+
+    <path d="M-80 713c130-67 228-7 340-41 112-35 134-136 258-135 124 1 147 104 277 96 138-8 191-126 324-106 74 11 117 65 179 81" stroke="#C2B7AB" stroke-opacity=".28" stroke-width="2.4"/>
+    <path d="M-74 725c134-66 231-4 345-39 115-35 136-130 253-130 122 0 149 99 276 92 137-8 193-120 324-100 72 11 116 61 178 78" stroke="#A56D24" stroke-opacity=".16" stroke-width="1.7"/>
+  </g>
+</svg>

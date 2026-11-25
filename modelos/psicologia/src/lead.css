@@ -1,0 +1,8 @@
+.lead-marca { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.lead-marca img { width: 48px; height: 48px; flex: none; }
+.lead-marca > span { display: grid; min-width: 0; text-align: left; }
+.lead-marca strong { font: 400 17px/1.2 Georgia, "Times New Roman", serif; letter-spacing: .08em; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; max-width: 230px; }
+.lead-marca small { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; opacity: .7; }
+.v3-brand--inverse .lead-marca { justify-content: center; color: #fffefb; }
+.v3-brand--inverse .lead-marca strong { -webkit-line-clamp: 4; }
+@media (max-width: 560px) { .lead-marca img { width: 38px; height: 38px; } .lead-marca strong { font-size: 13px; max-width: 170px; } }
