@@ -386,7 +386,8 @@ footer .legal{margin-top:24px;padding-top:20px;border-top:1px solid var(--linha)
   var local=[L.categoria||"Personal trainer",L.cidade].filter(Boolean); $("#local").textContent=local.join(" · ");
   if(!L.endereco) $("#mapa").hidden=true;
   var h=$("#heroi"); h.src=foto("1517836357463-d25dfeac3438",1400); h.fetchPriority="high"; h.alt="Foto ilustrativa de treino com barra";
-  var f=$("#foto"); f.src=L.foto||foto("1689877020200-403d8542d95d",900); f.alt=L.foto?L.nome:"Foto ilustrativa de uma academia";
+  var f=$("#foto"); f.src=L.foto||foto("1758875568932-0eefd3e60090",900); f.alt=L.foto?L.nome:"Foto ilustrativa de um personal trainer";
+  if(!L.foto) $("#foto-ilustrativa").textContent="Foto ilustrativa · aqui entra a sua foto";
   if(L.foto){$("#foto-ilustrativa").hidden=true; $("#hero-ilustrativa").hidden=true}
   var nota=parseFloat(L.nota.replace(",","."));
   if(nota){$("#selo").hidden=false; $("#selo-nota").textContent=L.nota; $("#selo-txt").textContent=(L.avaliacoes?L.avaliacoes+" avaliações":"avaliação")+" no Google";
@@ -404,6 +405,7 @@ footer .legal{margin-top:24px;padding-top:20px;border-top:1px solid var(--linha)
   $("#mods").innerHTML=M.map(function(m){return '<article class="modalidade"><img src="'+foto(m[3],520)+'" alt="Foto ilustrativa" loading="lazy"><span class="num">'+m[0]+'</span><h3>'+m[1]+'</h3><p>'+m[2]+'</p></article>'}).join("");
 
   /* sobre: texto mantém-se genérico; o nome aparece no título */
+  var t=$("#t-sobre"); t.textContent="Prazer, aqui é "; var sp=document.createElement("span"); sp.textContent=L.nome+"."; t.appendChild(sp);
   $("#sobre-txt").textContent="Acredito em treino bem feito, sem exagero e sem atalhos. O objetivo é que você saia de cada sessão mais forte e volte na próxima semana.";
 
   /* contatos e reservas */
