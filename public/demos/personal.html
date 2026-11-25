@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lucas Andrade · Personal trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--neon:#d4ff3a;--neon-2:#b8e62b;--preto:#0b0c0a;--grafite:#15171a;--osso:#f4f4ef;--cinza:#9ea29a;--linha:rgba(255,255,255,.12);
+  --titulo:"Archivo",Impact,"Arial Black",sans-serif;--texto:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--margem:max(20px,calc((100vw - 1160px)/2))}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font:400 16px/1.6 var(--texto);color:var(--osso);background:var(--preto);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--neon);outline-offset:3px}
+[hidden]{display:none!important}
+.faixa{padding-left:var(--margem);padding-right:var(--margem)}
+.secao{padding-top:clamp(70px,10vw,130px);padding-bottom:clamp(70px,10vw,130px)}
+h1,h2,h3{font-family:var(--titulo);font-weight:900;font-stretch:88%;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:clamp(40px,6vw,84px)}
+h2 span{color:var(--neon)}
+.rotulo{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--neon);margin-bottom:18px}
+.rotulo::before{content:"";width:28px;height:3px;background:var(--neon)}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:4px;font-weight:700;font-size:15px;letter-spacing:.02em;text-decoration:none;text-transform:uppercase;transition:transform .2s,background-color .2s,color .2s}
+.botao:hover{transform:translateY(-2px)}
+.botao:disabled,.botao[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.b-neon{background:var(--neon);color:var(--preto)}
+.b-neon:hover{background:var(--neon-2)}
+.b-linha{border:2px solid currentColor}
+.ilustrativa{position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:3px;background:rgba(0,0,0,.65);color:#fff;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+
+/* topo */
+.topo{position:absolute;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;height:86px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca i{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:4px;background:var(--neon);color:var(--preto);font:900 17px var(--titulo);font-style:normal}
+.marca span{font:900 17px/1.1 var(--titulo);text-transform:uppercase;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:300px}
+.topo nav{display:flex;gap:26px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.topo nav a{text-decoration:none;opacity:.8}
+.topo nav a:hover{opacity:1;color:var(--neon)}
+
+/* abertura */
+.abertura{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--preto)}
+.abertura>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.1)}
+.abertura::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,12,10,.96) 0%,rgba(11,12,10,.7) 45%,rgba(11,12,10,.2) 100%),linear-gradient(0deg,var(--preto) 0%,transparent 40%)}
+.abertura__texto{position:relative;z-index:2;padding-top:160px;padding-bottom:clamp(60px,9vw,110px);width:100%}
+.abertura h1{font-size:clamp(56px,11vw,160px);line-height:.88;max-width:9ch}
+.abertura h1 span{color:var(--neon)}
+.abertura p.lead{margin-top:26px;font-size:clamp(17px,2vw,21px);max-width:42ch;color:rgba(244,244,239,.85)}
+.selo{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:10px 16px;border-left:3px solid var(--neon);background:rgba(255,255,255,.06);font-size:14px;font-weight:600}
+.selo b{font:900 22px var(--titulo);color:var(--neon)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.abertura .b-linha{color:var(--osso)}
+
+/* faixa de números */
+.numeros{background:var(--neon);color:var(--preto)}
+.numeros ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.numeros li{padding:26px 18px;border-right:1px solid rgba(0,0,0,.15)}
+.numeros li:last-child{border-right:0}
+.numeros b{display:block;font:900 clamp(34px,4vw,52px)/1 var(--titulo);font-stretch:88%}
+.numeros span{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+
+/* modalidades */
+.cabeca{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:50px}
+.cabeca p{max-width:42ch;color:var(--cinza)}
+.modalidades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--linha)}
+.modalidade{position:relative;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;background:var(--grafite);overflow:hidden;isolation:isolate}
+.modalidade>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.42;filter:grayscale(1);transition:opacity .4s,filter .4s,transform .6s}
+.modalidade::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,var(--grafite) 10%,transparent 70%)}
+.modalidade:hover>img{opacity:.7;filter:grayscale(0);transform:scale(1.05)}
+.modalidade .num{font:900 14px var(--titulo);color:var(--neon);letter-spacing:.1em}
+.modalidade h3{font-size:34px;margin:10px 0 10px}
+.modalidade p{color:var(--cinza);font-size:15px}
+
+/* quiz */
+.quiz{background:var(--grafite)}
+.quiz .grade{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,80px);align-items:start}
+.quiz .grade>div>p{margin-top:18px;color:var(--cinza);max-width:40ch}
+.cartao{background:var(--preto);border:1px solid var(--linha);border-radius:6px;padding:clamp(22px,4vw,40px);min-height:430px;display:flex;flex-direction:column}
+.barra{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:28px}
+.barra span{height:4px;background:var(--linha);transition:background-color .3s}
+.barra span.feito{background:var(--neon)}
+.etapa{display:flex;flex-direction:column;flex:1}
+.etapa.entra{animation:entra .4s ease}
+@keyframes entra{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.etapa h3{font-size:30px;margin-bottom:20px}
+.opcoes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opcoes button{min-height:64px;padding:12px 16px;border:1px solid var(--linha);border-radius:4px;text-align:left;font-weight:600;transition:.15s}
+.opcoes button small{display:block;font-weight:400;font-size:13px;color:var(--cinza);margin-top:2px}
+.opcoes button:hover{border-color:var(--neon)}
+.opcoes button[aria-pressed="true"]{background:var(--neon);border-color:var(--neon);color:var(--preto)}
+.opcoes button[aria-pressed="true"] small{color:rgba(0,0,0,.6)}
+.voltar{margin-top:auto;padding-top:22px;align-self:flex-start;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:4px;color:var(--cinza)}
+.resultado .plano-sug{font:900 44px/1 var(--titulo);text-transform:uppercase;color:var(--neon);margin:6px 0 12px}
+.resultado p{color:var(--cinza)}
+.resultado .resumo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--neon);background:rgba(255,255,255,.05);font-size:14px;white-space:pre-wrap}
+.resultado .botao{margin-top:22px;width:100%}
+.resultado .nota{margin-top:10px;font-size:12px;color:var(--cinza);text-align:center}
+
+/* resultados */
+.prova{text-align:center}
+.prova .grande{font:900 clamp(96px,16vw,190px)/.9 var(--titulo);color:var(--neon)}
+.prova .estrelas{color:var(--neon);font-size:26px;letter-spacing:4px;margin-top:8px}
+.prova p{margin:16px auto 0;max-width:40ch;color:var(--cinza);font-size:17px}
+.prova .botao{margin-top:26px;color:var(--osso)}
+
+/* método */
+.metodo{background:var(--osso);color:var(--preto)}
+.metodo .cabeca p{color:#4a4d46}
+.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.passo{border-top:4px solid var(--preto);padding-top:22px}
+.passo b{display:block;font:900 84px/1 var(--titulo);color:transparent;-webkit-text-stroke:2px var(--preto);margin-bottom:14px}
+.passo h3{font-size:30px;margin-bottom:10px}
+.passo p{color:#4a4d46;font-size:15px}
+
+/* planos */
+.planos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.plano{display:flex;flex-direction:column;padding:34px 30px;background:var(--grafite);border:1px solid var(--linha);border-radius:6px}
+.plano.destaque{border-color:var(--neon);position:relative;transform:translateY(-10px)}
+.plano.destaque::before{content:"Mais escolhido";position:absolute;top:-13px;left:30px;padding:4px 12px;background:var(--neon);color:var(--preto);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.plano h3{font-size:30px}
+.plano .preco{margin:18px 0 6px;font:900 56px/1 var(--titulo);font-stretch:88%}
+.plano .preco small{font:500 15px var(--texto);color:var(--cinza)}
+.plano .resumo{color:var(--cinza);font-size:14px;margin-bottom:22px}
+.plano ul{list-style:none;flex:1;margin-bottom:28px}
+.plano li{padding:10px 0;border-top:1px solid var(--linha);font-size:15px;display:flex;gap:10px}
+.plano li::before{content:"✓";color:var(--neon);font-weight:700}
+.plano .botao{width:100%}
+.aviso{margin-top:30px;font-size:13px;color:var(--cinza)}
+
+/* sobre */
+.sobre{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,90px);align-items:center}
+.sobre figure{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:var(--grafite)}
+.sobre figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3)}
+.sobre p.corpo{margin-top:22px;color:var(--cinza);max-width:52ch}
+.sobre ul{list-style:none;margin-top:28px;display:grid;gap:12px}
+.sobre li{padding-left:28px;position:relative}
+.sobre li::before{content:"";position:absolute;left:0;top:10px;width:12px;height:12px;background:var(--neon)}
+
+/* dúvidas */
+.duvidas{background:var(--grafite)}
+.perguntas details{border-bottom:1px solid var(--linha)}
+.perguntas details:first-child{border-top:1px solid var(--linha)}
+.perguntas summary{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;list-style:none;cursor:pointer;font:800 20px/1.25 var(--titulo);text-transform:uppercase}
+.perguntas summary::-webkit-details-marker{display:none}
+.perguntas summary::after{content:"+";flex:none;font:400 30px/1 var(--texto);color:var(--neon);transition:transform .3s}
+.perguntas details[open] summary::after{transform:rotate(45deg)}
+.perguntas details p{padding-bottom:26px;color:var(--cinza);max-width:62ch}
+
+/* local */
+.local{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:center}
+.local dl{margin-top:30px;border-top:1px solid var(--linha)}
+.local dl div{padding:18px 0;border-bottom:1px solid var(--linha)}
+.local dt{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--neon)}
+.local dd{font:700 22px/1.3 var(--titulo);text-transform:none;font-stretch:100%;overflow-wrap:anywhere;margin-top:4px}
+.mapa{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--grafite);border:1px solid var(--linha)}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
+.mapa>svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa.real>svg{display:none}
+
+/* chamada */
+.chamada{background:var(--neon);color:var(--preto);text-align:center}
+.chamada h2{max-width:14ch;margin:0 auto}
+.chamada p{margin:18px auto 0;max-width:46ch;font-size:18px;font-weight:500}
+.chamada .botao{margin-top:34px;background:var(--preto);color:var(--neon)}
+.chamada .botao:hover{background:#1e211c}
+
+footer{background:var(--preto);padding-top:50px;padding-bottom:110px;font-size:13px;color:var(--cinza);border-top:1px solid var(--linha)}
+footer strong{display:block;color:var(--osso);font:900 22px var(--titulo);text-transform:uppercase;margin-bottom:10px}
+footer .legal{margin-top:24px;padding-top:20px;border-top:1px solid var(--linha)}
+
+.fixo{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 18px;border-radius:4px;background:var(--neon);color:var(--preto);font-weight:700;font-size:14px;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.fixo svg{width:24px;height:24px}
+
+.revela{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.revela.visto{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .topo nav{display:none}
+  .modalidades,.passos,.planos{grid-template-columns:1fr}
+  .plano.destaque{transform:none}
+  .numeros ul{grid-template-columns:1fr 1fr}
+  .numeros li:nth-child(2){border-right:0}
+  .sobre,.local,.quiz .grade{grid-template-columns:1fr}
+  .cartao{min-height:0}
+  .sobre figure{aspect-ratio:1}
+}
+@media (max-width:560px){
+  .fixo{width:58px;height:58px;padding:0;justify-content:center}
+  .fixo span{display:none}
+  .acoes .botao{width:100%}
+  .numeros li{padding:20px 14px}
+  .opcoes{grid-template-columns:1fr}
+  .resultado .plano-sug{font-size:36px}
+  body>footer{padding-bottom:100px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.revela{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="lead" hidden data-nome="Lucas Andrade" data-categoria="Personal trainer" data-cidade="São Paulo, SP" data-endereco="" data-telefone="" data-whatsapp="" data-maps="" data-nota="" data-avaliacoes="" data-foto="https://images.unsplash.com/photo-1758875568932-0eefd3e60090?auto=format&amp;fit=crop&amp;w=900&amp;q=72"></div>
+
+<header class="abertura" id="inicio">
+  <img id="heroi" alt="">
+  <div class="topo faixa">
+    <a class="marca" href="#inicio"><i>LA</i><span data-nome></span></a>
+    <nav aria-label="Seções do site"><a href="#avaliacao">Avaliação grátis</a><a href="#modalidades">Treinos</a><a href="#planos">Planos</a><a href="#sobre">Sobre</a></nav>
+  </div>
+  <div class="abertura__texto faixa">
+    <p class="rotulo" id="local"></p>
+    <h1>Comece com uma <span>avaliação grátis.</span></h1>
+    <p class="lead">Treino feito para o seu objetivo e a sua rotina, com acompanhamento de perto. Responda 3 perguntas e descubra o plano ideal.</p>
+    <div class="selo" id="selo" hidden><b id="selo-nota"></b><span id="selo-txt"></span></div>
+    <div class="acoes">
+      <a class="botao b-neon" href="#avaliacao">Quero minha avaliação grátis</a>
+      <a class="botao b-linha" href="#planos">Ver planos</a>
+    </div>
+  </div>
+  <span class="ilustrativa" id="hero-ilustrativa">Imagem ilustrativa</span>
+</header>
+
+<section class="numeros" aria-label="Números">
+  <ul class="faixa">
+    <li><b>1:1</b><span>Atenção exclusiva</span></li>
+    <li><b>Avaliação</b><span>Antes de qualquer treino</span></li>
+    <li><b>Sem</b><span>Treino genérico</span></li>
+    <li><b>Ao vivo</b><span>Ou online, você escolhe</span></li>
+  </ul>
+</section>
+
+<section id="avaliacao" class="quiz secao faixa" aria-labelledby="t-quiz">
+  <div class="grade">
+    <div class="revela">
+      <p class="rotulo">Avaliação gratuita</p>
+      <h2 id="t-quiz">3 perguntas, <span>1 plano certo.</span></h2>
+      <p>Responda rapidinho. No fim, a mensagem vai pronta para o WhatsApp e a primeira conversa é por conta da casa.</p>
+    </div>
+    <div class="cartao revela" aria-live="polite">
+      <div class="barra" aria-hidden="true"><span class="feito"></span><span></span><span></span><span></span></div>
+      <div class="etapa" data-e="0"><h3>Qual é o seu objetivo?</h3><div class="opcoes" data-chave="objetivo">
+        <button type="button" data-v="emagrecer">Emagrecer<small>Perder gordura com saúde</small></button>
+        <button type="button" data-v="ganhar massa">Ganhar massa<small>Força e definição</small></button>
+        <button type="button" data-v="condicionamento">Condicionamento<small>Fôlego e disposição</small></button>
+        <button type="button" data-v="voltar a treinar">Voltar a treinar<small>Depois de uma pausa</small></button></div></div>
+      <div class="etapa" data-e="1" hidden><h3>Quantas vezes por semana?</h3><div class="opcoes" data-chave="frequencia">
+        <button type="button" data-v="2">2 vezes<small>Rotina corrida</small></button>
+        <button type="button" data-v="3">3 vezes<small>O equilíbrio ideal</small></button>
+        <button type="button" data-v="4 ou mais">4 ou mais<small>Foco total</small></button>
+        <button type="button" data-v="ainda não sei">Ainda não sei<small>Vamos ver juntos</small></button></div><button type="button" class="voltar" data-ir="0">Voltar</button></div>
+      <div class="etapa" data-e="2" hidden><h3>Onde prefere treinar?</h3><div class="opcoes" data-chave="formato">
+        <button type="button" data-v="presencial">Presencial<small>Treino ao lado do personal</small></button>
+        <button type="button" data-v="online">Online<small>Onde você estiver</small></button>
+        <button type="button" data-v="tanto faz">Tanto faz<small>O que encaixar melhor</small></button></div><button type="button" class="voltar" data-ir="1">Voltar</button></div>
+      <div class="etapa resultado" data-e="3" hidden>
+        <p class="rotulo">O seu plano sugerido</p>
+        <div class="plano-sug" id="plano-sug"></div>
+        <p id="plano-porque"></p>
+        <p class="resumo" id="quiz-msg"></p>
+        <a class="botao b-neon" id="quiz-enviar" target="_blank" rel="noopener">Agendar minha avaliação</a>
+        <p class="nota" id="quiz-nota">Sem compromisso. O personal confirma o horário pelo WhatsApp.</p>
+        <button type="button" class="voltar" data-ir="0">Refazer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modalidades" class="secao faixa" aria-labelledby="t-mod">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Modalidades</p><h2 id="t-mod">Escolha o <span>seu jogo.</span></h2></div>
+    <p>Cada treino parte do seu objetivo, da sua rotina e do seu corpo. Nada de fórmula pronta.</p>
+  </div>
+  <div class="modalidades revela" id="mods"></div>
+</section>
+
+<section class="metodo secao faixa" aria-labelledby="t-met">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Como funciona</p><h2 id="t-met">Três passos <span>até o resultado.</span></h2></div>
+    <p>Um processo simples, do primeiro contato à rotina no ritmo que você consegue sustentar.</p>
+  </div>
+  <div class="passos revela">
+    <article class="passo"><b>01</b><h3>Avaliação</h3><p>Conversamos sobre seus objetivos, sua rotina e seu histórico. Ajustamos as metas antes do primeiro treino.</p></article>
+    <article class="passo"><b>02</b><h3>Plano</h3><p>Você recebe um treino feito para você, com a progressão combinada e as orientações de execução.</p></article>
+    <article class="passo"><b>03</b><h3>Acompanhamento</h3><p>Ajustamos a carga, a dieta conversada com seu nutricionista e a rotina quando a vida mudar.</p></article>
+  </div>
+</section>
+
+<section id="planos" class="secao faixa" aria-labelledby="t-plan">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Planos</p><h2 id="t-plan">Investimento <span>que cabe.</span></h2></div>
+    <p>Valores de exemplo para esta demonstração. Confirme as condições com o profissional.</p>
+  </div>
+  <div class="planos revela">
+    <article class="plano"><h3>Essencial</h3><p class="resumo">Para começar com orientação.</p><div class="preco">R$ 290<small>/mês</small></div><ul><li>2 treinos por semana</li><li>Avaliação inicial</li><li>Ajustes a cada 30 dias</li></ul><a class="botao b-linha" data-msg="Essencial" href="#contato">Quero este</a></article>
+    <article class="plano destaque"><h3>Evolução</h3><p class="resumo">O mais procurado para resultado.</p><div class="preco">R$ 490<small>/mês</small></div><ul><li>3 treinos por semana</li><li>Avaliação física a cada 60 dias</li><li>Plano alimentar com nutricionista parceiro</li><li>Suporte pelo WhatsApp</li></ul><a class="botao b-neon" data-msg="Evolução" href="#contato">Quero este</a></article>
+    <article class="plano"><h3>Presença total</h3><p class="resumo">Atenção máxima, dia após dia.</p><div class="preco">R$ 790<small>/mês</small></div><ul><li>4 a 5 treinos por semana</li><li>Acompanhamento diário</li><li>Avaliação mensal</li><li>Plano de descanso e recuperação</li></ul><a class="botao b-linha" data-msg="Presença total" href="#contato">Quero este</a></article>
+  </div>
+  <p class="aviso">Valores e pacotes de exemplo. Confirme com o profissional antes de contratar.</p>
+</section>
+
+<section id="sobre" class="sobre secao faixa" aria-labelledby="t-sobre">
+  <figure class="revela"><img id="foto" alt="" loading="lazy"><span class="ilustrativa" id="foto-ilustrativa">Imagem ilustrativa</span></figure>
+  <div class="revela">
+    <p class="rotulo">Sobre</p>
+    <h2 id="t-sobre">Prazer, <span>sou o Lucas.</span></h2>
+    <p class="corpo" id="sobre-txt">Acredito em treino bem feito, sem exagero e sem atalhos. O objetivo é que você saia de cada sessão mais forte e volte na próxima semana.</p>
+    <ul>
+      <li>Formação em educação física e foco em musculação e funcional</li>
+      <li>Atendimento presencial ou online</li>
+      <li>Treinos para adultos, iniciantes e retomada depois de pausas</li>
+    </ul>
+  </div>
+</section>
+
+<section class="prova secao faixa" id="prova" hidden aria-labelledby="t-prova">
+  <p class="rotulo">Quem treina, aprova</p>
+  <div class="grande" id="prova-nota"></div>
+  <div class="estrelas" aria-hidden="true">★★★★★</div>
+  <p id="t-prova"></p>
+  <a class="botao b-linha" id="prova-link" target="_blank" rel="noopener">Ver avaliações no Google</a>
+</section>
+
+<section id="duvidas" class="duvidas secao faixa" aria-labelledby="t-duv">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Dúvidas</p><h2 id="t-duv">Antes de <span>começar.</span></h2></div>
+  </div>
+  <div class="perguntas revela">
+    <details open><summary>Preciso estar em forma para começar?</summary><p>Não. A avaliação inicial mostra o ponto de partida e o treino é adaptado a ele.</p></details>
+    <details><summary>Os treinos podem ser online?</summary><p>Sim. Os treinos online seguem o mesmo plano, com vídeo de execução e acompanhamento.</p></details>
+    <details><summary>Quanto tempo leva para ver resultado?</summary><p>Depende do objetivo, da frequência e da rotina. Nas primeiras semanas, o ganho de disposição costuma aparecer primeiro.</p></details>
+    <details><summary>Preciso de atestado médico?</summary><p>Recomendamos uma avaliação médica antes de começar, principalmente em caso de condições de saúde ou longa pausa.</p></details>
+  </div>
+</section>
+
+<section id="contato" class="local secao faixa" aria-labelledby="t-local">
+  <div class="revela">
+    <p class="rotulo">Onde treinar</p>
+    <h2 id="t-local">Agende sua <span>avaliação.</span></h2>
+    <dl>
+      <div data-se="endereco"><dt>Endereço</dt><dd data-campo="endereco"></dd></div>
+      <div data-se="cidade"><dt>Cidade</dt><dd data-campo="cidade"></dd></div>
+      <div data-se="telefone"><dt>Telefone</dt><dd data-campo="telefone"></dd></div>
+    </dl>
+    <div class="acoes"><a class="botao b-neon" id="whats-contato" target="_blank" rel="noopener">Chamar no WhatsApp</a><a class="botao b-linha" id="link-mapa" target="_blank" rel="noopener">Ver no mapa</a></div>
+  </div>
+  <div class="mapa revela" id="mapa">
+    <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="450" fill="#15171a"/><path d="M0 120H600M0 260H600M120 0V450M330 0V450M470 0V450M0 400L600 300" stroke="#2a2d29" stroke-width="10" fill="none"/><path d="M300 230c40-40 90-30 90-80a90 90 0 0 0-180 0c0 50 90 80 90 80z" fill="#d4ff3a"/><circle cx="300" cy="150" r="22" fill="#0b0c0a"/></svg>
+  </div>
+</section>
+
+<section class="chamada secao faixa">
+  <p class="rotulo" style="color:#0b0c0a">Próximo passo</p>
+  <h2>Chega de começar <span style="color:#0b0c0a">amanhã.</span></h2>
+  <p>A primeira avaliação é gratuita e sem compromisso. Leva só alguns minutos.</p>
+  <a class="botao" href="#avaliacao">Quero minha avaliação grátis</a>
+</section>
+
+<footer class="faixa">
+  <strong data-nome></strong>
+  <p>Personal fictício. Site de demonstração criado pela Diskett Labs. A foto é ilustrativa e não retrata um profissional real.</p>
+  <p class="legal">Fotos ilustrativas (Unsplash). Planos, valores e textos de exemplo. © 2026</p>
+</footer>
+
+<a class="fixo" id="fixo" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 11.6a8.2 8.2 0 0 1-12.1 7.2L3.5 20l1.3-4.4a8.2 8.2 0 1 1 15.4-4Z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var d=$("#lead").dataset;
+  var limpo=function(v){v=(v||"").trim(); return v.indexOf("{{")===0?"":v};
+  var web=function(v){return /^https?:\/\//i.test(v||"")};
+  var foto=function(id,w){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w="+(w||900)+"&q=72"};
+  var L={nome:(limpo(d.nome).split("|")[0].trim()||"Personal trainer"),categoria:limpo(d.categoria),cidade:limpo(d.cidade),endereco:limpo(d.endereco),telefone:limpo(d.telefone),
+    whatsapp:web(d.whatsapp)?d.whatsapp:"",maps:web(d.maps)?d.maps:"",nota:limpo(d.nota),avaliacoes:limpo(d.avaliacoes),foto:web(d.foto)?d.foto:""};
+
+  $$("[data-nome]").forEach(function(e){e.textContent=L.nome});
+  $$("[data-campo]").forEach(function(e){e.textContent=L[e.dataset.campo]||""});
+  $$("[data-se]").forEach(function(e){var v=e.querySelector("[data-campo]"); if(!v||!v.textContent.trim()) e.hidden=true});
+  var local=[L.categoria||"Personal trainer",L.cidade].filter(Boolean); $("#local").textContent=local.join(" · ");
+  if(!L.endereco) $("#mapa").hidden=true;
+  var h=$("#heroi"); h.src=foto("1517836357463-d25dfeac3438",1400); h.fetchPriority="high"; h.alt="Foto ilustrativa de treino com barra";
+  var f=$("#foto"); f.src=L.foto||foto("1689877020200-403d8542d95d",900); f.alt=L.foto?L.nome:"Foto ilustrativa de uma academia";
+  
+  var nota=parseFloat(L.nota.replace(",","."));
+  if(nota){$("#selo").hidden=false; $("#selo-nota").textContent=L.nota; $("#selo-txt").textContent=(L.avaliacoes?L.avaliacoes+" avaliações":"avaliação")+" no Google";
+    $("#prova").hidden=false; $("#prova-nota").textContent=L.nota; $("#t-prova").textContent=(L.avaliacoes?L.avaliacoes+" pessoas avaliaram":"Avaliação de")+" "+L.nome+" no Google.";
+    if(L.maps) $("#prova-link").href=L.maps; else $("#prova-link").hidden=true}
+
+  /* modalidades */
+  var M=[
+    ["01","Musculação","Ganho de força e massa com progressão de carga e execução bem orientada.","1517836357463-d25dfeac3438"],
+    ["02","Funcional","Movimentos do dia a dia para mais força, equilíbrio e disposição.","1599058917212-d750089bc07e"],
+    ["03","Emagrecimento","Treino combinado com ajustes de rotina para perder gordura sem perder saúde.","1541534741688-6078c6bfb5c5"],
+    ["04","Corrida","Preparação para provas de 5 km a meia maratona, com ritmos e descanso.","1759674861540-afed9f86f94a"],
+    ["05","Retomada","Para quem voltou depois de uma pausa, por lesão ou pela vida. Começa devagar.","1689877020200-403d8542d95d"],
+    ["06","Online","O mesmo método à distância, com vídeos de execução e acompanhamento semanal.","1575052814086-f385e2e2ad1b"]];
+  $("#mods").innerHTML=M.map(function(m){return '<article class="modalidade"><img src="'+foto(m[3],520)+'" alt="Foto ilustrativa" loading="lazy"><span class="num">'+m[0]+'</span><h3>'+m[1]+'</h3><p>'+m[2]+'</p></article>'}).join("");
+
+  /* sobre: texto mantém-se genérico; o nome aparece no título */
+  $("#sobre-txt").textContent="Comecei a treinar para recuperar a disposição e acabei transformando isso em profissão. Hoje ajudo pessoas com rotina corrida a treinar com segurança, sem exagero e sem atalhos, para sair de cada sessão mais fortes e voltar na próxima semana.";
+
+  /* contatos e reservas */
+  var msg=function(extra){return "Olá! Quero agendar minha avaliação gratuita."+(extra?" Tenho interesse no plano "+extra+".":"")};
+  if(L.whatsapp){
+    $("#fixo").href=L.whatsapp;
+    $("#whats-contato").href=L.whatsapp;
+    $$("[data-msg]").forEach(function(a){a.href=L.whatsapp+"?text="+encodeURIComponent(msg(a.dataset.msg)); a.target="_blank"; a.rel="noopener"});
+    $("#fixo").href=L.whatsapp+"?text="+encodeURIComponent(msg());
+    $("#whats-contato").href=L.whatsapp+"?text="+encodeURIComponent(msg());
+  } else {$("#fixo").hidden=true; $("#whats-contato").hidden=true; $$("[data-msg]").forEach(function(a){a.removeAttribute("href"); a.setAttribute("aria-disabled","true")})}
+  if(L.maps) $("#link-mapa").href=L.maps; else $("#link-mapa").hidden=true;
+
+  /* quiz da avaliação */
+  var resp={};
+  function etapa(n){$$(".etapa").forEach(function(e){var on=+e.dataset.e===n; e.hidden=!on; e.classList.toggle("entra",on)}); $$(".barra span").forEach(function(b,i){b.classList.toggle("feito",i<=n)})}
+  $$(".opcoes").forEach(function(g){g.addEventListener("click",function(e){var b=e.target.closest("button"); if(!b) return;
+    $$("[data-chave='"+g.dataset.chave+"'] button").forEach(function(x){x.setAttribute("aria-pressed",x===b)}); resp[g.dataset.chave]=b.dataset.v;
+    var n=+g.closest(".etapa").dataset.e; setTimeout(function(){if(n<2) etapa(n+1); else concluir()},220)})});
+  $$("[data-ir]").forEach(function(b){b.addEventListener("click",function(){etapa(+b.dataset.ir)})});
+  function concluir(){
+    var plano=resp.frequencia==="2"?"Essencial":resp.frequencia==="4 ou mais"?"Presença total":"Evolução";
+    var porque={"Essencial":"Para encaixar o treino numa rotina corrida, com orientação e progressão desde o começo.","Evolução":"O equilíbrio entre frequência e acompanhamento que mais traz resultado consistente.","Presença total":"Para quem quer acompanhamento de perto em quase todos os dias da semana."}[plano];
+    var txt="Olá! Quero agendar minha avaliação gratuita.\nObjetivo: "+resp.objetivo+"\nFrequência: "+(resp.frequencia==="ainda não sei"?"ainda não sei":resp.frequencia+"x por semana")+"\nFormato: "+resp.formato+"\nPlano sugerido: "+plano;
+    $("#plano-sug").textContent=plano; $("#plano-porque").textContent=porque; $("#quiz-msg").textContent=txt;
+    var env=$("#quiz-enviar");
+    if(L.whatsapp){env.href=L.whatsapp+"?text="+encodeURIComponent(txt)} else {env.removeAttribute("href"); env.setAttribute("aria-disabled","true"); $("#quiz-nota").textContent="Demonstração: no site do profissional, este botão abre o WhatsApp com a mensagem pronta."}
+    etapa(3);
+  }
+
+  /* mapa real */
+  if(L.endereco){
+    var ponto=L.maps.match(/!3d(-?[\d.]+)!4d(-?[\d.]+)/);
+    var m=document.createElement("iframe");
+    m.src="https://maps.google.com/maps?q="+encodeURIComponent(ponto?ponto[1]+","+ponto[2]:L.endereco)+"&z=16&hl=pt-BR&output=embed";
+    m.title="Mapa: "+L.endereco; m.loading="lazy";
+    $("#mapa").appendChild(m); $("#mapa").classList.add("real");
+  }
+
+  if("IntersectionObserver" in window){
+    var olho=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visto"); olho.unobserve(e.target)}})},{threshold:.12});
+    $$(".revela").forEach(function(e){olho.observe(e)});
+  } else $$(".revela").forEach(function(e){e.classList.add("visto")});
+})();
+</script>
+</body>
+</html>
