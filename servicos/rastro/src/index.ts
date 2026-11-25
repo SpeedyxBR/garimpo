@@ -16,7 +16,10 @@ const HOST = process.env.RASTRO_HOST || "127.0.0.1";
 const PORT = Number(process.env.RASTRO_PORT) || 4310;
 const TOKEN = process.env.RASTRO_TOKEN || "";
 const SESSION_ID = "rastro";
-const SEARCH_TIMEOUT_MS = 90_000;
+// A coleta para no prazo suave e entrega o que já leu; o prazo duro (504) é só para busca travada.
+// O painel (src/lib/rastro.ts) precisa esperar mais que o prazo duro.
+const SOFT_TIMEOUT_MS = 210_000;
+const SEARCH_TIMEOUT_MS = 240_000;
 const MAX_PER_HOUR = Number(process.env.RASTRO_LIMITE_HORA) || 20;
 const MAX_RESULTS = Math.min(20, Number(process.env.RASTRO_MAX_RESULTADOS) || 20);
 const MAX_BODY_BYTES = 10_000;
@@ -62,7 +65,8 @@ function enqueue<T>(job: (isCancelled: () => boolean) => Promise<T>): Promise<T>
       let cancelled = false;
       // O 504 sai na hora; a busca recebe o cancelamento e a fila continua presa até ela terminar de fato.
       const timer = setTimeout(() => { cancelled = true; reject(new HttpError(504, { motivo: "timeout" })); }, SEARCH_TIMEOUT_MS);
-      try { resolve(await job(() => cancelled)); }
+      const softDeadline = Date.now() + SOFT_TIMEOUT_MS;
+      try { resolve(await job(() => cancelled || Date.now() >= softDeadline)); }
       catch (error) { reject(error); }
       finally {
         clearTimeout(timer);

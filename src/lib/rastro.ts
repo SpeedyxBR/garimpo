@@ -44,7 +44,7 @@ async function chamar(caminho: string, corpo: unknown): Promise<Lugar[]> {
       method: "POST",
       headers: { "content-type": "application/json", "x-rastro-token": token },
       body: JSON.stringify(corpo),
-      signal: AbortSignal.timeout(150_000),
+      signal: AbortSignal.timeout(270_000),
       cache: "no-store",
     });
   } catch {

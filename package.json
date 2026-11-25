@@ -48,5 +48,10 @@
     "prisma": "^7.10.1",
     "tailwindcss": "^4.3.5",
     "typescript": "^5.9.3"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true,
+    "prisma@7.10.1": true,
+    "@prisma/engines@7.10.1": true
   }
 }
