@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{nome}} · Restaurante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --cor:#c2410c; --cor-2:#9a3412; --cor-clara:#fdba74; --cor-fundo:#ffedd5;
+  --creme:#fdf8f1; --areia:#f3e9da; --carvao:#1c1917; --cinza:#57534e; --linha:#e7dccb;
+  --titulo:"Fraunces",Georgia,serif; --texto:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --margem:max(20px,calc((100vw - 1160px)/2));
+}
+.t-japones{--cor:#b91c1c;--cor-2:#7f1d1d;--cor-clara:#fca5a5;--cor-fundo:#fee2e2}
+.t-hamburgueria{--cor:#d97706;--cor-2:#92400e;--cor-clara:#fcd34d;--cor-fundo:#fef3c7}
+.t-brasileiro{--cor:#15803d;--cor-2:#14532d;--cor-clara:#86efac;--cor-fundo:#dcfce7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{font:400 16px/1.6 var(--texto);color:var(--carvao);background:var(--creme);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--cor);outline-offset:3px}
+[hidden]{display:none!important}
+.faixa{padding-left:var(--margem);padding-right:var(--margem)}
+.secao{padding-top:clamp(64px,9vw,120px);padding-bottom:clamp(64px,9vw,120px)}
+h1,h2,h3{font-family:var(--titulo);font-weight:700;line-height:1.06;text-wrap:balance}
+h2{font-size:clamp(36px,4.8vw,60px);letter-spacing:-.01em}
+h2 em,h1 em{color:var(--cor);font-style:italic;font-weight:500}
+.rotulo{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cor);margin-bottom:16px}
+.cabeca{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px}
+.cabeca>p{max-width:44ch;color:var(--cinza)}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:background-color .2s,transform .2s,opacity .2s}
+.botao:hover{transform:translateY(-1px)}
+.botao:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.b-cor{background:var(--cor);color:#fff}
+.b-cor:hover{background:var(--cor-2)}
+.b-escuro{background:var(--carvao);color:#fff}
+.b-linha{border:1.5px solid currentColor}
+.abertura .ilustrativa{right:auto;left:var(--margem);z-index:3}
+.ilustrativa{position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:999px;background:rgba(28,25,23,.62);color:#fff;font-size:11px;letter-spacing:.04em}
+
+/* topo */
+.topo{position:absolute;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;height:88px;color:#fff}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca i{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;background:var(--cor);font:700 17px var(--titulo);font-style:normal;color:#fff}
+.marca span{font:700 19px/1.15 var(--titulo);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:320px}
+.topo nav{display:flex;gap:28px;font-size:14px;font-weight:500}
+.topo nav a{text-decoration:none;opacity:.88}
+.topo nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+
+/* abertura */
+.abertura{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--carvao)}
+.abertura>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:aproxima 14s ease-out forwards}
+@keyframes aproxima{to{transform:scale(1)}}
+.abertura::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,25,23,.6) 0%,rgba(28,25,23,.12) 32%,rgba(28,25,23,.94) 100%)}
+.abertura__texto{position:relative;z-index:2;padding-bottom:clamp(56px,9vw,100px);padding-top:150px;width:100%}
+.abertura .rotulo{color:var(--cor-clara)}
+.abertura h1{font-size:clamp(46px,8vw,108px);letter-spacing:-.02em;line-height:.96;max-width:12ch}
+.abertura p.lead{margin-top:22px;font-size:clamp(17px,1.9vw,21px);max-width:42ch;color:rgba(255,255,255,.9)}
+.selo{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);font-size:14px;font-weight:500}
+.selo b{font:700 18px var(--titulo);color:var(--cor-clara)}
+.estrelas{color:#fbbf24;letter-spacing:2px}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.abertura .b-linha{color:#fff}
+
+/* faixa de informações */
+.info{background:var(--carvao);color:#fff;padding-top:30px;padding-bottom:30px}
+.info ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.info li{display:flex;gap:14px;align-items:flex-start;font-size:15px;min-width:0}
+.info svg{flex:none;width:22px;height:22px;color:var(--cor-clara);margin-top:2px}
+.info strong{display:block;font-weight:600}
+.info small{color:rgba(255,255,255,.72);overflow-wrap:anywhere}
+
+/* mais pedidos */
+.destaques{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.destaque{position:relative;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 18px 40px -24px rgba(28,25,23,.35);transition:transform .35s ease}
+.destaque:hover{transform:translateY(-4px)}
+.destaque figure{position:relative;aspect-ratio:4/3;overflow:hidden}
+.destaque img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.destaque:hover img{transform:scale(1.05)}
+.destaque .n{position:absolute;left:14px;top:14px;padding:4px 12px;border-radius:999px;background:var(--cor);color:#fff;font-size:12px;font-weight:600}
+.destaque div{padding:20px 22px 24px}
+.destaque h3{font-size:24px;display:flex;justify-content:space-between;gap:14px}
+.destaque h3 span{font:600 17px var(--texto);color:var(--cor);white-space:nowrap}
+.destaque p{margin-top:8px;color:var(--cinza);font-size:15px}
+
+/* cardápio */
+.cardapio{background:var(--areia)}
+.abas{display:flex;gap:10px;margin-bottom:34px;overflow-x:auto;padding:4px;scrollbar-width:none}
+.abas::-webkit-scrollbar{display:none}
+.abas button{flex:none;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--linha);background:#fff;font-weight:600;font-size:14px;transition:.2s}
+.abas button[aria-pressed="true"]{background:var(--carvao);color:#fff;border-color:var(--carvao)}
+.itens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 28px}
+.itens.entra{animation:surgir .45s ease}
+@keyframes surgir{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.item{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:4px 18px;align-items:start;padding:14px;border-radius:20px;background:#fff}
+.item img{grid-row:1/4;width:92px;height:92px;border-radius:14px;object-fit:cover}
+.item h3{font:700 20px/1.2 var(--titulo)}
+.item .preco{font-weight:600;color:var(--cor);white-space:nowrap}
+.item p{grid-column:2/4;color:var(--cinza);font-size:14px;line-height:1.5}
+.item .tag{grid-column:2/4;justify-self:start;font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--cor-2);background:var(--cor-fundo);padding:2px 10px;border-radius:999px}
+.aviso{margin-top:28px;font-size:13px;color:var(--cinza)}
+
+.mais{grid-column:3;grid-row:2;justify-self:end;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--carvao);color:#fff;font-size:22px;line-height:1;transition:transform .2s,background-color .2s}
+.mais:hover{transform:scale(1.08);background:var(--cor)}
+.mais.ok{background:var(--cor);animation:pulo .35s ease}
+@keyframes pulo{50%{transform:scale(1.25)}}
+.destaque>div{position:relative}
+.destaque .mais{position:absolute;right:18px;top:-23px;width:46px;height:46px;font-size:26px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.ferramentas{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.filtro{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;cursor:pointer}
+.filtro input{width:20px;height:20px;accent-color:var(--cor)}
+.dica{font-size:13px;color:var(--cinza)}
+.sacola{position:fixed;left:50%;bottom:18px;z-index:45;transform:translate(-50%,140%);display:flex;align-items:center;gap:16px;padding:10px 10px 10px 22px;border-radius:999px;background:var(--carvao);color:#fff;box-shadow:0 18px 40px rgba(0,0,0,.35);transition:transform .45s cubic-bezier(.2,.9,.3,1.2);width:min(520px,calc(100vw - 32px))}
+.sacola.on{transform:translate(-50%,0)}
+.sacola .qtd{display:grid;place-items:center;min-width:30px;height:30px;padding:0 8px;border-radius:999px;background:var(--cor);font-weight:700;font-size:14px}
+.sacola .tot{flex:1;font-weight:600;font-size:15px}
+.sacola .tot small{display:block;font-weight:400;font-size:12px;color:rgba(255,255,255,.65)}
+.sacola button{min-height:46px;padding:0 20px;border-radius:999px;background:#fff;color:var(--carvao);font-weight:700;font-size:14px}
+body.com-pedido .fixo{display:none}
+.fundo-pedido{position:fixed;inset:0;z-index:60;background:rgba(28,25,23,.55);opacity:0;pointer-events:none;transition:opacity .3s}
+.fundo-pedido.on{opacity:1;pointer-events:auto}
+.pedido{position:fixed;right:0;top:0;bottom:0;z-index:61;width:min(440px,100vw);background:var(--creme);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.pedido.on{transform:none}
+.pedido header{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--linha)}
+.pedido header h3{font-size:26px}
+.pedido .fechar{width:40px;height:40px;border-radius:50%;border:1px solid var(--linha);font-size:20px}
+.pedido ul{list-style:none;flex:1;overflow:auto;padding:8px 24px}
+.pedido li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:4px 14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--linha)}
+.pedido li img{grid-row:1/3;width:56px;height:56px;border-radius:12px;object-fit:cover}
+.pedido li strong{font:700 17px/1.2 var(--titulo)}
+.pedido li span{font-size:14px;color:var(--cinza)}
+.pedido .qt{grid-column:3;grid-row:1/3;display:flex;align-items:center;gap:8px}
+.pedido .qt button{width:32px;height:32px;border-radius:50%;border:1px solid var(--linha);font-size:18px;line-height:1}
+.pedido .qt b{min-width:18px;text-align:center}
+.pedido footer{padding:18px 24px 24px;border-top:1px solid var(--linha);background:#fff}
+.pedido footer .linha-tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;margin:14px 0 4px}
+.pedido footer .botao{width:100%;margin-top:12px}
+.pedido footer .nota{margin-top:10px;font-size:12px;color:var(--cinza);text-align:center}
+.pedido .previa-msg{margin-top:12px;padding:14px;border-radius:14px;background:var(--areia);font-size:13px;white-space:pre-wrap;max-height:160px;overflow:auto}
+.pedido .vazio{display:block;padding:40px 0;text-align:center;color:var(--cinza)}
+
+/* galeria */
+.galeria{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.galeria figure{position:relative;border-radius:22px;overflow:hidden;background:var(--linha)}
+.galeria figure:first-child{grid-row:1/3}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.galeria figure:hover img{transform:scale(1.04)}
+
+/* avaliação do Google */
+.avaliacao{background:var(--carvao);color:#fff;text-align:center}
+.avaliacao .rotulo{color:var(--cor-clara)}
+.avaliacao .grande{font:700 clamp(84px,14vw,160px)/1 var(--titulo);color:#fff}
+.avaliacao .estrelas{font-size:30px;margin-top:6px}
+.avaliacao p{margin:16px auto 0;max-width:40ch;color:rgba(255,255,255,.78);font-size:17px}
+.avaliacao .botao{margin-top:28px;color:#fff}
+
+/* sobre */
+.sobre{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,88px);align-items:center}
+.sobre figure{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--linha)}
+.sobre figure img{width:100%;height:100%;object-fit:cover}
+.sobre p.corpo{margin-top:22px;color:var(--cinza);max-width:52ch}
+.numeros{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.numeros div{background:var(--areia);border-radius:18px;padding:20px}
+.numeros b{display:block;font:700 22px var(--titulo);color:var(--cor)}
+.numeros span{font-size:14px;color:var(--cinza)}
+
+/* reserva */
+.reserva{background:var(--cor-fundo)}
+.reserva .grade{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,80px);align-items:start}
+.reserva .grade>div>p{margin-top:18px;color:var(--cinza);max-width:40ch}
+.painel{background:#fff;border-radius:28px;padding:clamp(22px,4vw,40px);box-shadow:0 24px 60px -30px rgba(28,25,23,.35)}
+.passo h3{font-size:22px;margin-bottom:14px}
+.passo+.passo{margin-top:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:44px;padding:0 16px;border-radius:14px;border:1px solid var(--linha);font-weight:500;font-size:14px;transition:.15s}
+.chips button small{display:block;font-size:11px;color:var(--cinza);line-height:1}
+.chips button[aria-pressed="true"]{background:var(--carvao);border-color:var(--carvao);color:#fff}
+.chips button[aria-pressed="true"] small{color:rgba(255,255,255,.7)}
+.contador{display:flex;align-items:center;gap:16px}
+.contador button{width:44px;height:44px;border-radius:50%;border:1px solid var(--linha);font-size:22px;line-height:1}
+.contador output{font:700 28px var(--titulo);min-width:3ch;text-align:center}
+.campo{display:block;font-weight:600;font-size:14px}
+.campo input,.campo textarea{display:block;width:100%;margin-top:8px;padding:13px 15px;border-radius:14px;border:1px solid var(--linha);background:var(--creme);font-weight:400;font-size:16px;resize:vertical}
+.resumo{margin-top:26px;padding:16px 18px;border-radius:16px;background:var(--areia);font-size:14px;white-space:pre-wrap}
+.painel .botao{margin-top:20px;width:100%}
+.painel .nota{margin-top:12px;font-size:12px;color:var(--cinza);text-align:center}
+
+/* pedidos e redes */
+.canais{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.canal{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 20px;border-radius:999px;background:#fff;border:1px solid var(--linha);font-weight:600;font-size:14px;text-decoration:none}
+.canal i{width:10px;height:10px;border-radius:50%;background:var(--cor);font-style:normal}
+
+/* onde fica */
+.onde{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:center}
+.endereco{margin-top:22px;font-size:16px;color:var(--cinza)}
+.endereco strong{display:block;font:700 24px/1.25 var(--titulo);color:var(--carvao);margin-bottom:4px;overflow-wrap:anywhere}
+.horarios{margin-top:26px;border-top:1px solid var(--linha)}
+.horarios div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--linha);font-size:15px}
+.horarios div span:last-child{font-weight:600}
+.mapa{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;background:var(--areia);border:1px solid var(--linha)}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa>svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa.real>svg{display:none}
+
+body>footer{background:var(--carvao);color:rgba(255,255,255,.7);padding-top:52px;padding-bottom:110px;font-size:13px}
+body>footer strong{display:block;color:#fff;font:700 22px var(--titulo);margin-bottom:10px}
+body>footer .legal{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}
+
+.fixo{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;align-items:center;gap:10px;height:56px;padding:0 22px 0 18px;border-radius:56px;background:#1f7a50;color:#fff;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.fixo svg{width:24px;height:24px}
+
+.revela{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.revela.visto{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .topo nav{display:none}
+  .info ul,.destaques{grid-template-columns:1fr}
+  .itens{grid-template-columns:1fr}
+  .sobre,.onde,.reserva .grade{grid-template-columns:1fr}
+  .galeria{grid-template-columns:1fr 1fr;grid-template-rows:200px 160px 160px}
+  .galeria figure:first-child{grid-column:1/3;grid-row:auto}
+  .sobre figure{aspect-ratio:4/3}
+}
+@media (max-width:560px){
+  .fixo{width:58px;height:58px;padding:0;justify-content:center}
+  .fixo span{display:none}
+  .acoes .botao{width:100%}
+  .item{grid-template-columns:76px minmax(0,1fr) auto}
+  .item img{width:76px;height:76px}
+  body>footer{padding-bottom:100px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .revela{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="lead" hidden
+  data-nome="{{nome}}" data-categoria="{{categoria}}" data-cidade="{{cidade}}" data-endereco="{{endereco}}"
+  data-telefone="{{telefone}}" data-whatsapp="{{whatsapp_link}}" data-maps="{{maps_link}}" data-nota="{{nota}}"
+  data-avaliacoes="{{avaliacoes}}" data-instagram="{{instagram}}" data-foto="{{foto_restaurante}}" data-ifood="{{ifood_link}}"></div>
+
+<header class="abertura" id="inicio">
+  <img id="heroi" alt="">
+  <div class="topo faixa">
+    <a class="marca" href="#inicio"><i>{{iniciais}}</i><span data-nome></span></a>
+    <nav aria-label="Seções do site"><a href="#cardapio">Cardápio</a><a href="#galeria">Ambiente</a><a href="#reserva">Reservas</a><a href="#onde">Onde fica</a></nav>
+  </div>
+  <div class="abertura__texto faixa">
+    <p class="rotulo" id="local"></p>
+    <h1 data-nome></h1>
+    <p class="lead" id="lead-txt"></p>
+    <div class="selo" id="selo" hidden><span class="estrelas" aria-hidden="true">★★★★★</span><b id="selo-nota"></b><span id="selo-qtd"></span></div>
+    <div class="acoes">
+      <a class="botao b-cor" href="#cardapio">Ver cardápio</a>
+      <a class="botao b-linha" href="#reserva">Reservar mesa</a>
+    </div>
+  </div>
+  <span class="ilustrativa" id="hero-ilustrativa">Imagem ilustrativa</span>
+</header>
+
+<section class="info" aria-label="Informações">
+  <ul class="faixa">
+    <li id="info-endereco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><strong>Endereço</strong><small data-campo="endereco"></small></span></li>
+    <li id="info-telefone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><strong>Reservas e pedidos</strong><small data-campo="telefone"></small></span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><strong>Horário</strong><small>Confirme pelo WhatsApp</small></span></li>
+  </ul>
+</section>
+
+<section class="secao faixa" aria-labelledby="t-pedidos">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Os mais pedidos</p><h2 id="t-pedidos">Quem prova, <em>volta.</em></h2></div>
+    <p>Três pratos para começar. Fotos e preços ilustrativos nesta demonstração.</p>
+  </div>
+  <div class="destaques" id="destaques"></div>
+</section>
+
+<section id="cardapio" class="cardapio secao faixa" aria-labelledby="t-cardapio">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Cardápio</p><h2 id="t-cardapio">Para cada <em>fome</em>, um prato.</h2></div>
+    <p>Exemplo de cardápio para esta demonstração. Pratos, fotos e preços podem ser trocados pelos do restaurante.</p>
+  </div>
+  <div class="ferramentas"><span class="dica">Toque no <b>+</b> para montar o seu pedido.</span><label class="filtro"><input type="checkbox" id="so-veg"> Só vegetarianos</label></div>
+  <div class="abas" id="abas" role="group" aria-label="Categorias do cardápio"></div>
+  <div class="itens" id="itens" aria-live="polite"></div>
+  <p class="aviso">Pratos, fotos e preços de exemplo. Confirme o cardápio atual com a casa.</p>
+</section>
+
+<section id="galeria" class="secao faixa" aria-labelledby="t-galeria">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Ambiente</p><h2 id="t-galeria">Um lugar para <em>ficar mais.</em></h2></div>
+    <p>Imagens ilustrativas. No site final entram as fotos da casa.</p>
+  </div>
+  <div class="galeria revela" id="fotos"></div>
+</section>
+
+<section class="avaliacao secao faixa" id="avaliacao" hidden aria-labelledby="t-aval">
+  <p class="rotulo">Avaliação no Google</p>
+  <div class="grande" id="aval-nota"></div>
+  <div class="estrelas" aria-hidden="true">★★★★★</div>
+  <p id="t-aval"></p>
+  <a class="botao b-linha" id="aval-link" target="_blank" rel="noopener">Ver avaliações no Google</a>
+</section>
+
+<section class="sobre secao faixa" aria-labelledby="t-sobre">
+  <figure class="revela"><img id="foto-sobre" alt="" loading="lazy"><span class="ilustrativa">Imagem ilustrativa</span></figure>
+  <div class="revela">
+    <p class="rotulo">Sobre a casa</p>
+    <h2 id="t-sobre"></h2>
+    <p class="corpo" id="sobre-txt"></p>
+    <div class="numeros" id="numeros"></div>
+  </div>
+</section>
+
+<section id="reserva" class="reserva secao faixa" aria-labelledby="t-reserva">
+  <div class="grade">
+    <div class="revela">
+      <p class="rotulo">Reservas</p>
+      <h2 id="t-reserva">Sua mesa, <em>em três toques.</em></h2>
+      <p>Escolha o dia, o horário e quantas pessoas. A mensagem vai pronta para o WhatsApp da casa, e a equipe confirma.</p>
+      <div class="canais" id="canais"></div>
+    </div>
+    <div class="painel revela">
+      <div class="passo"><h3>1. Qual dia?</h3><div class="chips" id="dias"></div></div>
+      <div class="passo"><h3>2. Que horas?</h3><div class="chips" id="horas"></div></div>
+      <div class="passo"><h3>3. Quantas pessoas?</h3>
+        <div class="contador"><button type="button" id="menos" aria-label="Menos uma pessoa">−</button><output id="pessoas">2</output><button type="button" id="mais" aria-label="Mais uma pessoa">+</button></div>
+      </div>
+      <div class="passo"><label class="campo">Seu nome<input id="nome-cliente" type="text" autocomplete="name" maxlength="60" placeholder="Como podemos chamar você?"></label></div>
+      <p class="resumo" id="resumo"></p>
+      <a class="botao b-cor" id="enviar" target="_blank" rel="noopener">Enviar pedido de reserva</a>
+      <p class="nota" id="nota-reserva">A reserva só vale depois da confirmação da casa.</p>
+    </div>
+  </div>
+</section>
+
+<section id="onde" class="onde secao faixa" aria-labelledby="t-onde">
+  <div class="revela">
+    <p class="rotulo">Onde fica</p>
+    <h2 id="t-onde">Venha <em>até a gente.</em></h2>
+    <div class="endereco" id="endereco-bloco"><strong data-campo="endereco"></strong><span data-campo="cidade"></span></div>
+    <div class="horarios" aria-label="Horário de funcionamento (exemplo)" id="horarios"></div>
+    <p class="aviso">Horário de exemplo. Confirme pelo WhatsApp.</p>
+    <div class="acoes" id="acoes-mapa"><a class="botao b-escuro" id="link-mapa" target="_blank" rel="noopener">Abrir no mapa</a></div>
+  </div>
+  <div class="mapa revela" id="mapa">
+    <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="600" height="450" fill="#f3e9da"/>
+      <path d="M0 120H600M0 260H600M120 0V450M330 0V450M470 0V450M0 400L600 300" stroke="#e7dccb" stroke-width="10" fill="none"/>
+      <path d="M300 230c40-40 90-30 90-80a90 90 0 0 0-180 0c0 50 90 80 90 80z" fill="currentColor" style="color:var(--cor)"/>
+      <circle cx="300" cy="150" r="22" fill="#fff"/>
+    </svg>
+  </div>
+</section>
+
+<footer class="faixa">
+  <strong data-nome></strong>
+  <p>Prévia demonstrativa criada para apresentação. Não é o site oficial do restaurante.</p>
+  <p class="legal">Fotos ilustrativas (Unsplash). Cardápio, preços e horários de exemplo. © {{ano}}</p>
+</footer>
+
+<div class="sacola" id="sacola" role="region" aria-label="Seu pedido"><span class="qtd" id="sac-qtd">0</span><span class="tot" id="sac-tot"></span><button type="button" id="ver-pedido">Ver pedido</button></div>
+<div class="fundo-pedido" id="fundo-pedido"></div>
+<aside class="pedido" id="pedido" aria-label="Pedido" aria-hidden="true">
+  <header><h3>Seu pedido</h3><button type="button" class="fechar" id="fechar-pedido" aria-label="Fechar">×</button></header>
+  <ul id="lista-pedido"></ul>
+  <footer>
+    <label class="campo">Observação<textarea id="obs-pedido" rows="2" maxlength="200" placeholder="Ex.: sem cebola, vou retirar no balcão"></textarea></label>
+    <div class="linha-tot"><span>Total</span><span id="ped-tot"></span></div>
+    <a class="botao b-cor" id="enviar-pedido" target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
+    <p class="previa-msg" id="previa-msg" hidden></p>
+    <p class="nota" id="nota-pedido">O restaurante confirma o pedido, o valor final e a entrega pelo WhatsApp.</p>
+  </footer>
+</aside>
+
+<a class="fixo" id="fixo" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 11.6a8.2 8.2 0 0 1-12.1 7.2L3.5 20l1.3-4.4a8.2 8.2 0 1 1 15.4-4Z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var d=$("#lead").dataset;
+  var limpo=function(v){v=(v||"").trim(); return v.indexOf("{{")===0?"":v};
+  var web=function(v){return /^https?:\/\//i.test(v||"")};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var foto=function(id,w){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w="+(w||800)+"&q=70"};
+
+  var L={nome:(limpo(d.nome).split("|")[0].trim()||"Restaurante"),categoria:limpo(d.categoria),cidade:limpo(d.cidade),endereco:limpo(d.endereco),
+    telefone:limpo(d.telefone),whatsapp:web(d.whatsapp)?d.whatsapp:"",maps:web(d.maps)?d.maps:"",nota:limpo(d.nota),avaliacoes:limpo(d.avaliacoes),
+    instagram:limpo(d.instagram),foto:web(d.foto)?d.foto:"",ifood:web(d.ifood)?d.ifood:""};
+
+  /* fotos e cardápio de exemplo para cada tipo de cozinha */
+  var T={
+    pizzaria:{lead:"Massa de longa fermentação, forno bem quente e borda do jeito certo.",heroi:"1763647836753-e06fe1f8707b",
+      sobreT:"Pizza boa é <em>paciência.</em>",sobre:"A massa descansa, o molho é feito na casa e cada pizza sai do forno direto para a mesa ou para a sua porta.",sobreF:"1651981075280-9a9e01acbff0",
+      numeros:[["Forno quente","Pizzas assadas na hora"],["Delivery","Peça e receba em casa"]],
+      galeria:["1767713362918-d6db856570ba","1769521140317-5c6dcd1266e7","1759311944061-db7b99b3e205","1604382354936-07c5d9983bd3","1593504049359-74330189a345"],
+      cats:[["Pizzas salgadas",[["Margherita","Molho de tomate, mussarela de búfala e manjericão.","R$ 58","1574071318508-1cdbab80d002","Vegetariana",1],["Calabresa artesanal","Calabresa fatiada, cebola roxa e azeitonas.","R$ 54","1604382354936-07c5d9983bd3","",1],["Quatro queijos","Mussarela, provolone, gorgonzola e parmesão.","R$ 62","1593504049359-74330189a345","Vegetariana",1],["Frango com catupiry","Frango desfiado temperado e catupiry original.","R$ 59","1565299624946-b28f40a0ae38",""]]],
+        ["Especiais",[["Pizza da casa","Receita do pizzaiolo, pergunte o sabor do dia.","R$ 68","1513104890138-7c749659a591",""],["Rústica de forno","Massa fina, tomates frescos e ervas.","R$ 64","1622880833523-7cf1c0bd4296","Vegetariana"]]],
+        ["Doces",[["Pizza de brigadeiro","Chocolate, granulado e morangos.","R$ 49","1787788629825-720de3cc5b38","Vegetariana"]]],
+        ["Bebidas",[["Caipirinha","Limão, açúcar e cachaça ou vodka.","R$ 26","1613478223460-f448a4de829d",""],["Refrigerante lata","Opções tradicionais e zero.","R$ 8","1666355704386-93cf5f887404",""]]]]},
+    hamburgueria:{lead:"Pão macio, carne suculenta e batata crocante, do jeito que tem que ser.",heroi:"1787162685968-a767470afb7d",
+      sobreT:"Smash na chapa, <em>sabor de verdade.</em>",sobre:"Blend de carne moído na casa, pão selado na manteiga e molhos próprios. Aqui o lanche é levado a sério.",sobreF:"1757834787931-ddd70f3379a5",
+      numeros:[["Blend da casa","Carne moída todos os dias"],["Delivery","Peça e receba quentinho"]],
+      galeria:["1550547660-d9450f859349","1572802419224-296b0aeee0d9","1630384060421-cb20d0e0649d","1572490122747-3968b75cc699","1586190848861-99aa4a171e90"],
+      cats:[["Burgers",[["Clássico da casa","Blend 160 g, queijo, alface, tomate e molho especial.","R$ 34","1568901346375-23c9450c58cd","",1],["Duplo cheddar","Dois smash, cheddar derretido e cebola caramelizada.","R$ 42","1572802419224-296b0aeee0d9","",1],["Bacon crocante","Blend 160 g, bacon, queijo prato e maionese defumada.","R$ 39","1586190848861-99aa4a171e90",""],["Rústico","Pão australiano, queijo e rúcula.","R$ 37","1757834787931-ddd70f3379a5",""]]],
+        ["Acompanhamentos",[["Batata frita","Porção crocante com sal e alecrim.","R$ 19","1518013431117-eb1465fa5752","Vegetariano",1],["Batata rústica","Com casca, páprica e maionese da casa.","R$ 22","1630384060421-cb20d0e0649d","Vegetariano"]]],
+        ["Milkshakes",[["Chocolate com biscoito","Sorvete de creme, chocolate e biscoito.","R$ 24","1572490122747-3968b75cc699","Vegetariano"],["Morango","Sorvete de creme e morangos frescos.","R$ 23","1579954115545-a95591f28bfc","Vegetariano"]]]]},
+    japones:{lead:"Peixe fresco, arroz no ponto e preparo na hora, peça por peça.",heroi:"1562560471-cb5b5f96c1ab",
+      sobreT:"Precisão em <em>cada corte.</em>",sobre:"Os peixes chegam frescos, o arroz é temperado na casa e as peças são montadas na hora, para comer no salão ou em casa.",sobreF:"1693822998952-b8d18c61043b",
+      numeros:[["Peixe fresco","Recebido todos os dias"],["Combinados","Para uma pessoa ou para o grupo"]],
+      galeria:["1553621042-f6e147245754","1635321594488-2d38af11ed03","1761314025602-d9a27593476f","1785757871442-28b58a80e6f6","1770164520620-a5612325635b"],
+      cats:[["Combinados",[["Combinado 20 peças","Sushis, uramakis e sashimis variados.","R$ 89","1553621042-f6e147245754","",1],["Barca da casa","Seleção do sushiman para duas pessoas.","R$ 159","1770164520620-a5612325635b",""]]],
+        ["Sushis e rolls",[["Uramaki salmão","Salmão, cream cheese e cebolinha, 8 peças.","R$ 36","1579871494447-9811cf80d66c","",1],["Hot roll","Empanado, crocante e com tarê.","R$ 34","1761314025602-d9a27593476f",""],["Niguiri salmão","Fatia de salmão sobre arroz, 4 peças.","R$ 28","1579584425555-c3ce17fd4351",""]]],
+        ["Temakis",[["Temaki salmão","Salmão picado, cream cheese e cebolinha.","R$ 32","1791386809517-60f40f5372dd","",1],["Temaki skin","Pele de salmão crocante e tarê.","R$ 27","1710962169574-d1b52a2670e2",""]]],
+        ["Quentes",[["Guioza","Pastel japonês na chapa, 6 unidades.","R$ 29","1738681336104-608b4e7dc3b0",""]]]]},
+    brasileiro:{lead:"Comida de verdade, feita como em casa, todos os dias.",heroi:"1709114107937-6dec855d9ab5",
+      sobreT:"Tempero de <em>casa de vó.</em>",sobre:"Arroz soltinho, feijão do dia e carne no ponto. Um almoço completo, servido com carinho e preço justo.",sobreF:"1653681472495-0a62d97e37fb",
+      numeros:[["Prato do dia","Opção diferente a cada dia"],["Marmita","Para levar ou receber em casa"]],
+      galeria:["1610963490387-0c08126eacf8","1555939594-58d7cb561ad1","1614119068601-483274e9dcb7","1628521061262-19b5cdb7eee5","1787788629783-3505851503b3"],
+      cats:[["Pratos",[["Prato feito","Arroz, feijão, salada, farofa e a carne do dia.","R$ 29","1653681472495-0a62d97e37fb","",1],["Picanha na chapa","Com arroz, vinagrete, farofa e fritas.","R$ 64","1600891964092-4316c288032e","",1],["Carne de panela","Cozida lentamente, com batatas e arroz.","R$ 38","1628521061262-19b5cdb7eee5",""],["Bife acebolado","Bife grelhado, cebola dourada e acompanhamentos.","R$ 34","1546964124-0cce460f38ef",""]]],
+        ["Churrasco",[["Espeto misto","Carne, frango e linguiça na brasa.","R$ 46","1555939594-58d7cb561ad1","",1],["Fraldinha","Na brasa, fatiada na hora.","R$ 52","1614119068601-483274e9dcb7",""]]],
+        ["Sobremesas",[["Doces da casa","Brigadeiro, beijinho e bicho de pé.","R$ 12","1787788629783-3505851503b3","Vegetariano"]]],
+        ["Bebidas",[["Caipirinha","Limão, açúcar e cachaça.","R$ 24","1613478223460-f448a4de829d",""],["Suco natural","Fruta da estação, batida na hora.","R$ 12","1666355704386-93cf5f887404","Vegetariano"]]]]},
+    geral:{lead:"Pratos feitos com calma, servidos com atenção. Veja o cardápio e venha conhecer.",heroi:"1778650451432-f08ed467e2c4",
+      sobreT:"Cozinha de <em>todo dia</em>, com capricho.",sobre:"Ingredientes escolhidos com cuidado e um cardápio que muda com a estação. Para almoçar sem pressa e jantar com quem importa.",sobreF:"1476124369491-e7addf5db371",
+      numeros:[["Feito na hora","Pratos preparados no pedido"],["Ambiente","Para família e encontros"]],
+      galeria:["1744776411221-702f2848b0b2","1621996346565-e3dbc646d9a9","1566417713940-fe7c737a9ef2","1613274554329-70f997f5789f","1665401015549-712c0dc5ef85"],
+      cats:[["Entradas",[["Bruschetta da casa","Pão tostado, tomate, manjericão e azeite.","R$ 28","1506280754576-f6fa8a873550","Vegetariano",1],["Salada da estação","Folhas, legumes assados e molho de ervas.","R$ 34","1512621776951-a57141f2eefd","Vegetariano"]]],
+        ["Principais",[["Risoto do dia","Arroz arbóreo, caldo caseiro e ingrediente da estação.","R$ 58","1476124369491-e7addf5db371","",1],["Penne ao ragu","Massa com ragu de carne cozido lentamente.","R$ 52","1621996346565-e3dbc646d9a9","",1],["Bife grelhado","Corte nobre, legumes e batatas.","R$ 74","1608877906601-33195b1dc2cb",""],["Peixe do dia","Grelhado com limão, ervas e legumes.","R$ 66","1665401015549-712c0dc5ef85",""]]],
+        ["Sobremesas",[["Torta de frutas vermelhas","Massa amanteigada e calda da casa.","R$ 24","1476887334197-56adbf254e1a","Vegetariano"],["Trufas de chocolate","Chocolate meio amargo, feitas na casa.","R$ 18","1630953899906-d16511a72558","Vegetariano"]]],
+        ["Bebidas",[["Drink da casa","Criação da equipe do bar.","R$ 32","1566417713940-fe7c737a9ef2",""],["Suco natural","Frutas da estação.","R$ 14","1666355704386-93cf5f887404","Vegetariano"]]]]}
+  };
+  var base=(L.categoria+" "+L.nome).toLowerCase();
+  var tipo=/pizz/.test(base)?"pizzaria":/hamb|burg|lanch|smash/.test(base)?"hamburgueria":/japon|sushi|temak|oriental|nikkei/.test(base)?"japones":/brasil|caseir|self|marmit|churrasc|nordest|mineir|baian|feijoad|espetinh|prato feito|comida/.test(base)?"brasileiro":"geral";
+  var C=T[tipo];
+  document.documentElement.classList.add("t-"+tipo);
+
+  /* dados do lead */
+  $$("[data-nome]").forEach(function(e){e.textContent=L.nome});
+  $$("[data-campo]").forEach(function(e){e.textContent=L[e.dataset.campo]||""});
+  var local=[L.categoria,L.cidade].filter(Boolean); if(local.length) $("#local").textContent=local.join(" · "); else $("#local").hidden=true;
+  $("#lead-txt").textContent=C.lead;
+  if(!L.endereco){$("#info-endereco").hidden=true; $("#endereco-bloco").hidden=true}
+  if(!L.telefone) $("#info-telefone").hidden=true;
+  var heroi=$("#heroi"); heroi.src=L.foto||foto(C.heroi,1800); heroi.alt=L.foto?L.nome:"Foto ilustrativa do restaurante"; if(L.foto) $("#hero-ilustrativa").hidden=true;
+  var nota=parseFloat(L.nota.replace(",","."));
+  if(nota){
+    $("#selo").hidden=false; $("#selo-nota").textContent=L.nota; $("#selo-qtd").textContent=L.avaliacoes?"· "+L.avaliacoes+" avaliações":"no Google";
+    $("#avaliacao").hidden=false; $("#aval-nota").textContent=L.nota;
+    $("#t-aval").textContent=(L.avaliacoes?L.avaliacoes+" pessoas avaliaram":"Avaliação")+" o "+L.nome+" no Google.";
+    if(L.maps) $("#aval-link").href=L.maps; else $("#aval-link").hidden=true;
+  }
+
+  /* mais pedidos */
+  var todos=[]; C.cats.forEach(function(c){c[1].forEach(function(i){todos.push(i)})});
+  var top=todos.filter(function(i){return i[5]}).slice(0,3);
+  $("#destaques").innerHTML=top.map(function(i,n){return '<article class="destaque revela"><figure><img src="'+foto(i[3],900)+'" alt="Foto ilustrativa: '+esc(i[0])+'" loading="lazy"><span class="n">#'+(n+1)+' mais pedido</span></figure><div><h3>'+esc(i[0])+'<span>'+i[2]+'</span></h3><p>'+esc(i[1])+'</p><button type="button" class="mais" data-add="'+esc(i[0])+'" aria-label="Adicionar '+esc(i[0])+' ao pedido">+</button></div></article>'}).join("");
+
+  /* cardápio */
+  var abas=$("#abas"), itens=$("#itens");
+  abas.innerHTML=C.cats.map(function(c,n){return '<button type="button" aria-pressed="'+(n===0)+'" data-i="'+n+'">'+esc(c[0])+'</button>'}).join("");
+  function mostrar(n){
+    $$("#abas button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==n)});
+    atual=n; var veg=$("#so-veg").checked, lista=C.cats[n][1].filter(function(i){return !veg||i[4]});
+    itens.innerHTML=(lista.length?"":'<p class="dica">Nenhuma opção vegetariana nesta categoria.</p>')+lista.map(function(i){return '<article class="item"><img src="'+foto(i[3],240)+'" alt="Foto ilustrativa: '+esc(i[0])+'" loading="lazy"><h3>'+esc(i[0])+'</h3><span class="preco">'+i[2]+'</span><p>'+esc(i[1])+'</p>'+(i[4]?'<span class="tag">'+i[4]+'</span>':"")+'<button type="button" class="mais" data-add="'+esc(i[0])+'" aria-label="Adicionar '+esc(i[0])+' ao pedido">+</button></article>'}).join("");
+    itens.classList.remove("entra"); void itens.offsetWidth; itens.classList.add("entra");
+  }
+  abas.addEventListener("click",function(e){var b=e.target.closest("button"); if(b) mostrar(+b.dataset.i)});
+  var atual=0;
+  $("#so-veg").addEventListener("change",function(){mostrar(atual)});
+  mostrar(0);
+
+  /* pedido: monta no site e envia pronto pelo WhatsApp */
+  var porNome={}; todos.forEach(function(i){porNome[i[0]]=i});
+  var preco=function(i){return parseFloat(String(i[2]).replace(/[^\d,]/g,"").replace(",","."))||0};
+  var brl=function(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})};
+  var ped={};
+  function totalPed(){var q=0,t=0; Object.keys(ped).forEach(function(k){q+=ped[k]; t+=ped[k]*preco(porNome[k])}); return {q:q,t:t}}
+  function msgPed(){var linhas=Object.keys(ped).map(function(k){return ped[k]+"x "+k+" ("+brl(ped[k]*preco(porNome[k]))+")"}); var obs=$("#obs-pedido").value.trim();
+    return "Olá! Quero fazer um pedido:\n"+linhas.join("\n")+"\nTotal: "+brl(totalPed().t)+(obs?"\nObservação: "+obs:"")}
+  function desenhar(){
+    var r=totalPed(), ks=Object.keys(ped);
+    $("#sacola").classList.toggle("on",r.q>0); document.body.classList.toggle("com-pedido",r.q>0);
+    $("#sac-qtd").textContent=r.q; $("#sac-tot").innerHTML=brl(r.t)+"<small>"+(r.q===1?"1 item":r.q+" itens")+" no pedido</small>";
+    $("#ped-tot").textContent=brl(r.t);
+    $("#lista-pedido").innerHTML=ks.length?ks.map(function(k){var i=porNome[k]; return '<li><img src="'+foto(i[3],160)+'" alt=""><strong>'+esc(k)+'</strong><span>'+brl(preco(i))+'</span><div class="qt"><button type="button" data-menos="'+esc(k)+'" aria-label="Tirar um">−</button><b>'+ped[k]+'</b><button type="button" data-add="'+esc(k)+'" aria-label="Pôr mais um">+</button></div></li>'}).join(""):'<li class="vazio">Seu pedido está vazio.</li>';
+    var env=$("#enviar-pedido");
+    if(L.whatsapp&&ks.length){env.href=L.whatsapp+"?text="+encodeURIComponent(msgPed()); env.style.opacity=""}
+    else{env.removeAttribute("href"); env.style.opacity=(L.whatsapp||!ks.length)?".45":""}
+    if(!ks.length) $("#previa-msg").hidden=true;
+  }
+  document.addEventListener("click",function(e){
+    var a=e.target.closest("[data-add]"), m=e.target.closest("[data-menos]");
+    if(a){var k=a.dataset.add; ped[k]=(ped[k]||0)+1; if(a.classList.contains("mais")){a.classList.remove("ok"); void a.offsetWidth; a.classList.add("ok"); a.textContent="✓"; setTimeout(function(){a.textContent="+"},700)} desenhar()}
+    if(m){var k2=m.dataset.menos; ped[k2]--; if(ped[k2]<=0) delete ped[k2]; desenhar()}
+  });
+  function abrirPed(on){$("#pedido").classList.toggle("on",on); $("#fundo-pedido").classList.toggle("on",on); $("#pedido").setAttribute("aria-hidden",!on)}
+  $("#ver-pedido").onclick=function(){abrirPed(true)}; $("#fechar-pedido").onclick=function(){abrirPed(false)}; $("#fundo-pedido").onclick=function(){abrirPed(false)};
+  document.addEventListener("keydown",function(e){if(e.key==="Escape") abrirPed(false)});
+  $("#obs-pedido").addEventListener("input",desenhar);
+  if(!L.whatsapp){
+    $("#enviar-pedido").textContent="Ver a mensagem do pedido";
+    $("#nota-pedido").textContent="Demonstração: no site do restaurante, este botão envia o pedido direto para o WhatsApp da casa.";
+    $("#enviar-pedido").addEventListener("click",function(){if(Object.keys(ped).length){var m=$("#previa-msg"); m.hidden=false; m.textContent=msgPed()}});
+  }
+  desenhar();
+
+  /* galeria e sobre */
+  $("#fotos").innerHTML=C.galeria.map(function(id,n){return '<figure><img src="'+foto(id,n?600:1100)+'" alt="Foto ilustrativa do ambiente" loading="lazy">'+(n?"":'<span class="ilustrativa">Imagens ilustrativas</span>')+'</figure>'}).join("");
+  $("#t-sobre").innerHTML=C.sobreT; $("#sobre-txt").textContent=C.sobre;
+  var fs=$("#foto-sobre"); fs.src=foto(C.sobreF,1000); fs.alt="Foto ilustrativa de um prato";
+  $("#numeros").innerHTML=C.numeros.map(function(x){return "<div><b>"+x[0]+"</b><span>"+x[1]+"</span></div>"}).join("");
+
+  /* canais: WhatsApp, iFood, Instagram, quando existirem */
+  var canais=[];
+  if(L.whatsapp) canais.push(['<a class="canal" href="'+esc(L.whatsapp+"?text="+encodeURIComponent("Olá! Gostaria de fazer um pedido."))+'" target="_blank" rel="noopener"><i></i>Pedir pelo WhatsApp</a>']);
+  if(L.ifood) canais.push(['<a class="canal" href="'+esc(L.ifood)+'" target="_blank" rel="noopener"><i></i>Pedir no iFood</a>']);
+  if(L.instagram){var ig=web(L.instagram)?L.instagram:"https://instagram.com/"+L.instagram.replace(/^@/,""); canais.push(['<a class="canal" href="'+esc(ig)+'" target="_blank" rel="noopener"><i></i>Instagram</a>'])}
+  $("#canais").innerHTML=canais.join("");
+
+  /* reserva em três passos */
+  var semana=["dom","seg","ter","qua","qui","sex","sáb"], meses=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  var hoje=new Date(), escolha={dia:null,hora:null,pessoas:2};
+  var dias=[]; for(var k=0;k<7;k++){var x=new Date(hoje); x.setDate(hoje.getDate()+k); dias.push(x)}
+  $("#dias").innerHTML=dias.map(function(x,k){var rot=k===0?"Hoje":k===1?"Amanhã":semana[x.getDay()]; return '<button type="button" aria-pressed="false" data-v="'+(k<2?rot.toLowerCase():semana[x.getDay()]+", "+x.getDate()+"/"+meses[x.getMonth()])+'">'+rot+'<small>'+x.getDate()+" "+meses[x.getMonth()]+'</small></button>'}).join("");
+  $("#horas").innerHTML=["12:00","13:00","19:00","20:00","21:00"].map(function(h){return '<button type="button" aria-pressed="false" data-v="'+h+'">'+h+'</button>'}).join("");
+  function chips(sel,chave){$(sel).addEventListener("click",function(e){var b=e.target.closest("button"); if(!b) return; $$(sel+" button").forEach(function(o){o.setAttribute("aria-pressed",o===b)}); escolha[chave]=b.dataset.v; atualizar()})}
+  chips("#dias","dia"); chips("#horas","hora");
+  $("#menos").onclick=function(){escolha.pessoas=Math.max(1,escolha.pessoas-1); atualizar()};
+  $("#mais").onclick=function(){escolha.pessoas=Math.min(20,escolha.pessoas+1); atualizar()};
+  $("#nome-cliente").addEventListener("input",atualizar);
+  function atualizar(){
+    $("#pessoas").textContent=escolha.pessoas;
+    var nome=$("#nome-cliente").value.trim();
+    var texto="Olá! Gostaria de reservar uma mesa para "+escolha.pessoas+(escolha.pessoas===1?" pessoa":" pessoas")+(escolha.dia?" "+(/^(hoje|amanhã)$/.test(escolha.dia)?escolha.dia:"na "+escolha.dia):"")+(escolha.hora?" às "+escolha.hora:"")+"."+(nome?"\nMeu nome é "+nome+".":"");
+    $("#resumo").textContent=texto;
+    var pronto=escolha.dia&&escolha.hora&&nome, env=$("#enviar");
+    if(L.whatsapp&&pronto){env.href=L.whatsapp+"?text="+encodeURIComponent(texto); env.removeAttribute("aria-disabled"); env.style.opacity=""}
+    else{env.removeAttribute("href"); env.setAttribute("aria-disabled","true"); env.style.opacity=".45"}
+  }
+  if(!L.whatsapp) $("#nota-reserva").textContent="Demonstração: este restaurante ainda não tem WhatsApp cadastrado.";
+  atualizar();
+
+  /* horário de exemplo conforme o tipo */
+  var H={pizzaria:[["Terça a quinta","18h às 23h"],["Sexta e sábado","18h à 0h"],["Domingo","18h às 23h"]],hamburgueria:[["Segunda a quinta","18h às 23h"],["Sexta e sábado","18h à 0h"],["Domingo","18h às 22h"]],japones:[["Segunda a sexta","11h30 às 15h · 18h às 23h"],["Sábado","12h às 23h"],["Domingo","12h às 22h"]],brasileiro:[["Segunda a sexta","11h às 15h"],["Sábado","11h às 16h"],["Domingo","Fechado"]],geral:[["Segunda a sexta","11h às 15h · 18h às 23h"],["Sábado","12h às 23h"],["Domingo","12h às 17h"]]};
+  $("#horarios").innerHTML=H[tipo].map(function(h){return "<div><span>"+h[0]+"</span><span>"+h[1]+"</span></div>"}).join("");
+
+  /* mapa real */
+  if(L.maps) $("#link-mapa").href=L.maps; else $("#acoes-mapa").hidden=true;
+  if(L.endereco){
+    var ponto=L.maps.match(/!3d(-?[\d.]+)!4d(-?[\d.]+)/);
+    var m=document.createElement("iframe");
+    m.src="https://maps.google.com/maps?q="+encodeURIComponent(ponto?ponto[1]+","+ponto[2]:L.endereco)+"&z=16&hl=pt-BR&output=embed";
+    m.title="Mapa do endereço: "+L.endereco; m.loading="lazy";
+    $("#mapa").appendChild(m); $("#mapa").classList.add("real");
+  }
+
+  /* WhatsApp fixo */
+  if(L.whatsapp) $("#fixo").href=L.whatsapp; else $("#fixo").hidden=true;
+
+  /* entrada suave das seções */
+  if("IntersectionObserver" in window){
+    var olho=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visto"); olho.unobserve(e.target)}})},{threshold:.12});
+    $$(".revela").forEach(function(e){olho.observe(e)});
+  } else $$(".revela").forEach(function(e){e.classList.add("visto")});
+})();
+</script>
+</body>
+</html>
