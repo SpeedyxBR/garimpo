@@ -193,7 +193,7 @@ export default async function Negocio({ params }: { params: Promise<{ id: string
                           {p.vistaEm && ` · última ${quando(p.vistaEm)}`}
                         </p>
                         <div className="mt-3 flex flex-wrap gap-1.5">
-                          <a href={`/p/${p.slug}`} target="_blank" rel="noreferrer" className="btn btn-linha btn-sm">
+                          <a href={link} target="_blank" rel="noreferrer" className="btn btn-linha btn-sm">
                             <ExternalLink className="h-3.5 w-3.5" /> Abrir
                           </a>
                           <Copiar texto={link} rotulo="Copiar link" />

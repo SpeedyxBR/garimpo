@@ -76,7 +76,7 @@ export default async function Previas() {
                   <td className="text-tinta-3">{quando(p.criadoEm)}</td>
                   <td className="text-right">
                     <span className="inline-flex gap-2">
-                      <a href={`/p/${p.slug}`} target="_blank" rel="noreferrer" className="btn btn-linha btn-sm">
+                      <a href={`${base}/p/${p.slug}`} target="_blank" rel="noreferrer" className="btn btn-linha btn-sm">
                         Abrir
                       </a>
                       <Copiar texto={`${base}/p/${p.slug}`} rotulo="Link" />

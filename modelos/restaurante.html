@@ -443,7 +443,8 @@ body>footer .legal{margin-top:26px;padding-top:20px;border-top:1px solid rgba(25
         ["Bebidas",[["Drink da casa","Criação da equipe do bar.","R$ 32","1566417713940-fe7c737a9ef2",""],["Suco natural","Frutas da estação.","R$ 14","1666355704386-93cf5f887404","Vegetariano"]]]]}
   };
   var base=(L.categoria+" "+L.nome).toLowerCase();
-  var tipo=/pizz/.test(base)?"pizzaria":/hamb|burg|lanch|smash/.test(base)?"hamburgueria":/japon|sushi|temak|oriental|nikkei/.test(base)?"japones":/brasil|caseir|self|marmit|churrasc|nordest|mineir|baian|feijoad|espetinh|prato feito|comida/.test(base)?"brasileiro":"geral";
+  var FORCAR="";
+  var tipo=FORCAR||(/pizz/.test(base)?"pizzaria":/hamb|burg|lanch|smash/.test(base)?"hamburgueria":/japon|sushi|temak|oriental|nikkei/.test(base)?"japones":/brasil|caseir|self|marmit|churrasc|nordest|mineir|baian|feijoad|espetinh|prato feito|comida/.test(base)?"brasileiro":"geral");
   var C=T[tipo];
   document.documentElement.classList.add("t-"+tipo);
 
