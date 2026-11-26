@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{nome}} · Estética</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{--tinta:#2a1d2b;--tinta-2:#5b4a5c;--ameixa:#6d3f63;--blush:#f2d9d6;--rosa:#c97b84;--rosa-2:#b5636d;--papel:#fffaf8;--nevoa:#f6eeec;--linha:rgba(42,29,43,.12);
+  --titulo:"Fraunces",Georgia,"Times New Roman",serif;--texto:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;--margem:max(20px,calc((100vw - 1160px)/2))}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font:400 16px/1.65 var(--texto);color:var(--tinta);background:var(--papel);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
+[hidden]{display:none!important}
+.faixa{padding-left:var(--margem);padding-right:var(--margem)}
+.secao{padding-top:clamp(70px,10vw,130px);padding-bottom:clamp(70px,10vw,130px)}
+h1,h2,h3{font-family:var(--titulo);font-weight:400;line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
+h2{font-size:clamp(38px,5.4vw,70px)}
+h2 em,h1 em{font-style:italic;color:var(--ameixa)}
+.rotulo{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rosa-2);margin-bottom:18px}
+.rotulo::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,background-color .2s,color .2s}
+.botao:hover{transform:translateY(-2px)}
+.botao[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.b-cheio{background:var(--tinta);color:var(--papel)}
+.b-cheio:hover{background:var(--ameixa)}
+.b-linha{border:1.5px solid currentColor}
+.ilustrativa{position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:999px;background:rgba(42,29,43,.7);color:#fff;font-size:11px;letter-spacing:.04em}
+
+/* topo */
+.topo{position:absolute;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;height:86px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca i{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:var(--tinta);color:var(--blush);font:italic 400 18px var(--titulo)}
+.marca span{font:500 19px/1.15 var(--titulo);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:300px}
+.topo nav{display:flex;gap:28px;font-size:14px;font-weight:600;padding:10px 22px;border-radius:999px;background:rgba(255,250,248,.88);backdrop-filter:blur(8px)}
+.topo nav a{text-decoration:none;opacity:.75}
+.topo nav a:hover{opacity:1;color:var(--ameixa)}
+
+/* abertura */
+.abertura{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:100svh;background:var(--nevoa)}
+.abertura__texto{display:flex;flex-direction:column;justify-content:center;padding-top:130px;padding-bottom:70px;padding-right:clamp(20px,5vw,70px)}
+.abertura h1{font-size:clamp(48px,7.4vw,104px);font-weight:300;line-height:.98}
+.abertura p.lead{margin-top:24px;font-size:clamp(17px,1.8vw,20px);max-width:40ch;color:var(--tinta-2)}
+.selo{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:10px 18px 10px 12px;border-radius:999px;background:#fff;font-size:14px;font-weight:600;box-shadow:0 6px 24px rgba(42,29,43,.08);align-self:flex-start}
+.selo b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--blush);font:500 16px var(--titulo);color:var(--ameixa)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.abertura figure{position:relative;margin:24px 24px 24px 0;border-radius:220px 220px 24px 24px;overflow:hidden;background:var(--blush)}
+.abertura figure img{width:100%;height:100%;object-fit:cover}
+
+/* faixa */
+.faixa-fina{background:var(--tinta);color:var(--blush);overflow:hidden}
+.faixa-fina ul{list-style:none;display:flex;gap:48px;padding:20px 0;width:max-content;animation:corre 38s linear infinite;font:italic 300 22px var(--titulo)}
+.faixa-fina li{display:flex;align-items:center;gap:48px;white-space:nowrap}
+.faixa-fina li::after{content:"✦";font-style:normal;font-size:14px;color:var(--rosa)}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* diagnóstico */
+.diag{background:var(--papel)}
+.diag .grade{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,80px);align-items:start}
+.diag .grade>div>p{margin-top:18px;color:var(--tinta-2);max-width:40ch}
+.cartao{background:#fff;border:1px solid var(--linha);border-radius:28px;padding:clamp(22px,4vw,42px);min-height:460px;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(42,29,43,.07)}
+.passinhos{display:flex;align-items:center;gap:10px;margin-bottom:26px;font-size:13px;font-weight:600;color:var(--tinta-2)}
+.passinhos span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--linha);font-size:12px;transition:.3s}
+.passinhos span.feito{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.passinhos i{flex:1;height:1.5px;background:var(--linha)}
+.etapa{display:flex;flex-direction:column;flex:1}
+.etapa.entra{animation:entra .45s ease}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.etapa h3{font-size:32px;margin-bottom:6px}
+.etapa .dica{color:var(--tinta-2);font-size:14px;margin-bottom:20px}
+.opcoes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opcoes button{min-height:66px;padding:12px 18px;border:1.5px solid var(--linha);border-radius:18px;text-align:left;font-weight:700;transition:.15s;background:var(--papel)}
+.opcoes button small{display:block;font-weight:500;font-size:13px;color:var(--tinta-2);margin-top:2px}
+.opcoes button:hover{border-color:var(--rosa)}
+.opcoes button[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.opcoes button[aria-pressed="true"] small{color:rgba(255,255,255,.7)}
+.voltar{margin-top:auto;padding-top:22px;align-self:flex-start;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:4px;color:var(--tinta-2)}
+.resultado .proto{font:400 clamp(34px,4vw,46px)/1.05 var(--titulo);color:var(--ameixa);margin:4px 0 12px}
+.resultado p{color:var(--tinta-2)}
+.resultado .resumo{margin-top:18px;padding:16px 18px;border-radius:16px;background:var(--nevoa);font-size:14px;white-space:pre-wrap;color:var(--tinta)}
+.resultado .botao{margin-top:22px;width:100%}
+.resultado .nota{margin-top:10px;font-size:12px;text-align:center}
+
+/* procedimentos */
+.cabeca{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:50px}
+.cabeca p{max-width:42ch;color:var(--tinta-2)}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.filtros button{padding:10px 20px;border-radius:999px;border:1.5px solid var(--linha);font-weight:700;font-size:14px}
+.filtros button[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.procs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.proc{display:flex;flex-direction:column;background:#fff;border-radius:24px;overflow:hidden;border:1px solid var(--linha);transition:transform .3s,box-shadow .3s}
+.proc:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(42,29,43,.1)}
+.proc figure{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--blush)}
+.proc figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.proc:hover figure img{transform:scale(1.05)}
+.proc .tag{position:absolute;left:14px;top:14px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.92);font-size:12px;font-weight:700}
+.proc div{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.proc h3{font-size:26px}
+.proc p{margin-top:8px;color:var(--tinta-2);font-size:15px;flex:1}
+.proc .meta{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--linha);font-size:14px;font-weight:600}
+.proc .meta a{color:var(--ameixa);text-decoration:underline;text-underline-offset:4px}
+
+/* ritual */
+.ritual{background:var(--tinta);color:var(--papel)}
+.ritual .rotulo{color:var(--blush)}
+.ritual h2 em{color:var(--blush)}
+.ritual .cabeca p{color:rgba(255,250,248,.7)}
+.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:p}
+.passo{padding:30px;border-radius:24px;border:1px solid rgba(255,255,255,.14)}
+.passo b{display:block;font:italic 300 64px/1 var(--titulo);color:var(--rosa);margin-bottom:16px}
+.passo h3{font-size:28px;margin-bottom:10px}
+.passo p{color:rgba(255,250,248,.72);font-size:15px}
+
+/* pacotes */
+.pacotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.pacote{display:flex;flex-direction:column;padding:34px 30px;background:#fff;border:1px solid var(--linha);border-radius:28px}
+.pacote.destaque{background:var(--blush);border-color:transparent;position:relative}
+.pacote.destaque::before{content:"Mais procurado";position:absolute;top:22px;right:22px;padding:5px 12px;border-radius:999px;background:var(--tinta);color:#fff;font-size:12px;font-weight:700}
+.pacote h3{font-size:30px}
+.pacote .preco{margin:18px 0 4px;font:400 50px/1 var(--titulo)}
+.pacote .preco small{font:500 15px var(--texto);color:var(--tinta-2)}
+.pacote .resumo{color:var(--tinta-2);font-size:14px;margin-bottom:22px}
+.pacote ul{list-style:none;flex:1;margin-bottom:28px}
+.pacote li{padding:10px 0;border-top:1px solid var(--linha);font-size:15px;display:flex;gap:10px}
+.pacote li::before{content:"✦";color:var(--rosa-2);font-size:12px;line-height:24px}
+.pacote .botao{width:100%}
+.aviso{margin-top:28px;font-size:13px;color:var(--tinta-2)}
+
+/* sobre */
+.sobre{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,90px);align-items:center;background:var(--nevoa)}
+.sobre figure{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:24px 24px 220px 220px;background:var(--blush)}
+.sobre figure img{width:100%;height:100%;object-fit:cover}
+.sobre p.corpo{margin-top:22px;color:var(--tinta-2);max-width:52ch}
+.sobre ul{list-style:none;margin-top:28px;display:grid;gap:12px}
+.sobre li{padding-left:28px;position:relative}
+.sobre li::before{content:"✦";position:absolute;left:0;color:var(--rosa-2)}
+
+/* prova */
+.prova{text-align:center}
+.prova .grande{font:300 clamp(96px,15vw,180px)/.9 var(--titulo);color:var(--ameixa)}
+.prova .estrelas{color:var(--rosa);font-size:24px;letter-spacing:4px;margin-top:10px}
+.prova p{margin:16px auto 0;max-width:40ch;color:var(--tinta-2);font-size:17px}
+.prova .botao{margin-top:26px}
+
+/* dúvidas */
+.perguntas details{border-bottom:1px solid var(--linha)}
+.perguntas details:first-child{border-top:1px solid var(--linha)}
+.perguntas summary{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;list-style:none;cursor:pointer;font:400 23px/1.3 var(--titulo)}
+.perguntas summary::-webkit-details-marker{display:none}
+.perguntas summary::after{content:"+";flex:none;font:300 30px/1 var(--texto);color:var(--rosa-2);transition:transform .3s}
+.perguntas details[open] summary::after{transform:rotate(45deg)}
+.perguntas details p{padding-bottom:26px;color:var(--tinta-2);max-width:62ch}
+
+/* local */
+.local{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:center}
+.local dl{margin-top:30px;border-top:1px solid var(--linha)}
+.local dl div{padding:18px 0;border-bottom:1px solid var(--linha)}
+.local dt{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rosa-2)}
+.local dd{font:400 22px/1.35 var(--titulo);overflow-wrap:anywhere;margin-top:4px}
+.mapa{position:relative;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:var(--nevoa);border:1px solid var(--linha)}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.6) sepia(.15)}
+.mapa>svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa.real>svg{display:none}
+
+/* chamada */
+.chamada{background:var(--blush);text-align:center}
+.chamada h2{max-width:16ch;margin:0 auto}
+.chamada p{margin:18px auto 0;max-width:46ch;font-size:18px;color:var(--tinta-2)}
+.chamada .botao{margin-top:34px}
+
+body>footer{background:var(--tinta);color:rgba(255,250,248,.65);padding-top:50px;padding-bottom:110px;font-size:13px}
+body>footer strong{display:block;color:var(--papel);font:400 24px var(--titulo);margin-bottom:10px}
+body>footer .legal{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14)}
+
+.fixo{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 18px;border-radius:999px;background:var(--tinta);color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 12px 30px rgba(42,29,43,.3)}
+.fixo svg{width:24px;height:24px}
+
+.revela{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.revela.visto{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .topo nav{display:none}
+  .abertura{grid-template-columns:1fr}
+  .abertura__texto{padding-top:120px;padding-bottom:30px}
+  .abertura figure{margin:0 20px 30px;aspect-ratio:4/5;border-radius:180px 180px 24px 24px}
+  .procs,.passos,.pacotes{grid-template-columns:1fr}
+  .sobre,.local,.diag .grade{grid-template-columns:1fr}
+  .cartao{min-height:0}
+  .sobre figure{aspect-ratio:1;border-radius:24px 24px 160px 160px}
+}
+@media (max-width:560px){
+  .fixo{width:58px;height:58px;padding:0;justify-content:center}
+  .fixo span{display:none}
+  .acoes .botao{width:100%}
+  .opcoes{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.revela{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="lead" hidden data-nome="{{nome}}" data-categoria="{{categoria}}" data-cidade="{{cidade}}" data-endereco="{{endereco}}" data-telefone="{{telefone}}" data-whatsapp="{{whatsapp_link}}" data-maps="{{maps_link}}" data-nota="{{nota}}" data-avaliacoes="{{avaliacoes}}" data-foto="{{foto_profissional}}"></div>
+
+<header class="abertura" id="inicio">
+  <div class="topo faixa">
+    <a class="marca" href="#inicio"><i>{{iniciais}}</i><span data-nome></span></a>
+    <nav aria-label="Seções do site"><a href="#diagnostico">Avaliação da pele</a><a href="#procedimentos">Procedimentos</a><a href="#pacotes">Pacotes</a><a href="#sobre">Sobre</a></nav>
+  </div>
+  <div class="abertura__texto faixa" style="padding-right:clamp(20px,5vw,70px)">
+    <p class="rotulo" id="local"></p>
+    <h1>A sua pele, <em>no seu melhor momento.</em></h1>
+    <p class="lead">Tratamentos faciais e corporais com avaliação antes de tudo. Responda 3 perguntas e descubra o protocolo indicado para você.</p>
+    <div class="selo" id="selo" hidden><b id="selo-nota"></b><span id="selo-txt"></span></div>
+    <div class="acoes">
+      <a class="botao b-cheio" href="#diagnostico">Descobrir meu tratamento</a>
+      <a class="botao b-linha" href="#procedimentos">Ver procedimentos</a>
+    </div>
+  </div>
+  <figure><img id="heroi" alt=""><span class="ilustrativa" id="hero-ilustrativa">Imagem ilustrativa</span></figure>
+</header>
+
+<section class="faixa-fina" aria-hidden="true"><ul id="faixa"></ul></section>
+
+<section id="diagnostico" class="diag secao faixa" aria-labelledby="t-diag">
+  <div class="grade">
+    <div class="revela">
+      <p class="rotulo">Avaliação da pele</p>
+      <h2 id="t-diag">Três perguntas, <em>um cuidado certo.</em></h2>
+      <p>Conte o que mais incomoda e o seu tipo de pele. No fim, você recebe a sugestão de protocolo e a mensagem já vai pronta para agendar pelo WhatsApp.</p>
+    </div>
+    <div class="cartao revela" aria-live="polite">
+      <div class="passinhos" aria-hidden="true"><span class="feito">1</span><i></i><span>2</span><i></i><span>3</span><i></i><span>✦</span></div>
+      <div class="etapa" data-e="0"><h3>O que mais te incomoda hoje?</h3><p class="dica">Escolha a principal.</p><div class="opcoes" data-chave="queixa">
+        <button type="button" data-v="manchas">Manchas<small>Melasma, sol, marcas</small></button>
+        <button type="button" data-v="acne e oleosidade">Acne e oleosidade<small>Cravos, espinhas, brilho</small></button>
+        <button type="button" data-v="linhas e flacidez">Linhas e flacidez<small>Rugas finas, firmeza</small></button>
+        <button type="button" data-v="pele sem viço">Pele sem viço<small>Opaca, cansada</small></button>
+        <button type="button" data-v="inchaço e retenção">Inchaço e retenção<small>Pernas pesadas, edema</small></button>
+        <button type="button" data-v="medidas e contorno">Medidas e contorno<small>Gordura localizada</small></button></div></div>
+      <div class="etapa" data-e="1" hidden><h3>Como é a sua pele?</h3><p class="dica">Se não souber, tudo bem: a avaliação descobre.</p><div class="opcoes" data-chave="pele">
+        <button type="button" data-v="oleosa">Oleosa<small>Brilho ao longo do dia</small></button>
+        <button type="button" data-v="seca">Seca<small>Repuxa, descama</small></button>
+        <button type="button" data-v="mista">Mista<small>Oleosa na zona T</small></button>
+        <button type="button" data-v="sensível">Sensível<small>Fica vermelha fácil</small></button>
+        <button type="button" data-v="não sei">Não sei<small>Quero descobrir</small></button></div><button type="button" class="voltar" data-ir="0">Voltar</button></div>
+      <div class="etapa" data-e="2" hidden><h3>Qual horário fica melhor?</h3><p class="dica">Só para adiantar o agendamento.</p><div class="opcoes" data-chave="periodo">
+        <button type="button" data-v="manhã">Manhã<small>Começar o dia renovada</small></button>
+        <button type="button" data-v="tarde">Tarde<small>Uma pausa na rotina</small></button>
+        <button type="button" data-v="início da noite">Início da noite<small>Depois do trabalho</small></button>
+        <button type="button" data-v="sábado">Sábado<small>Com calma</small></button></div><button type="button" class="voltar" data-ir="1">Voltar</button></div>
+      <div class="etapa resultado" data-e="3" hidden>
+        <p class="rotulo">Protocolo sugerido</p>
+        <div class="proto" id="proto"></div>
+        <p id="proto-porque"></p>
+        <p class="resumo" id="diag-msg"></p>
+        <a class="botao b-cheio" id="diag-enviar" target="_blank" rel="noopener">Agendar minha avaliação</a>
+        <p class="nota" id="diag-nota">Sugestão inicial. O protocolo final é definido na avaliação presencial.</p>
+        <button type="button" class="voltar" data-ir="0">Refazer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="procedimentos" class="secao faixa" aria-labelledby="t-proc" style="background:var(--nevoa)">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Procedimentos</p><h2 id="t-proc">Cuidados <em>para rosto e corpo.</em></h2></div>
+    <p>Cada protocolo começa com uma avaliação da pele e é ajustado à sua rotina e ao resultado que você quer.</p>
+  </div>
+  <div class="filtros revela" role="group" aria-label="Filtrar procedimentos">
+    <button type="button" data-f="todos" aria-pressed="true">Todos</button>
+    <button type="button" data-f="rosto" aria-pressed="false">Rosto</button>
+    <button type="button" data-f="corpo" aria-pressed="false">Corpo</button>
+  </div>
+  <div class="procs revela" id="procs"></div>
+  <p class="aviso">Valores e durações de exemplo para esta demonstração.</p>
+</section>
+
+<section class="ritual secao faixa" aria-labelledby="t-rit">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Como funciona</p><h2 id="t-rit">Do primeiro contato <em>ao resultado.</em></h2></div>
+    <p>Sem pacote empurrado. Primeiro entendemos a sua pele; depois, montamos o plano.</p>
+  </div>
+  <div class="passos revela">
+    <article class="passo"><b>01</b><h3>Avaliação</h3><p>Análise da pele, conversa sobre hábitos, histórico e o que você espera do tratamento.</p></article>
+    <article class="passo"><b>02</b><h3>Protocolo</h3><p>Um plano com as sessões, o intervalo entre elas e os cuidados em casa, explicado com clareza.</p></article>
+    <article class="passo"><b>03</b><h3>Acompanhamento</h3><p>Registro da evolução a cada sessão e ajustes conforme a resposta da sua pele.</p></article>
+  </div>
+</section>
+
+<section id="pacotes" class="secao faixa" aria-labelledby="t-pac">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Pacotes</p><h2 id="t-pac">Cuidado <em>com constância.</em></h2></div>
+    <p>Resultado em estética vem da sequência certa de sessões. Os pacotes ajudam a manter o ritmo.</p>
+  </div>
+  <div class="pacotes revela">
+    <article class="pacote"><h3>Primeiro cuidado</h3><p class="resumo">Para conhecer e começar bem.</p><div class="preco">R$ 180</div><ul><li>Avaliação da pele</li><li>1 limpeza de pele profunda</li><li>Orientação de cuidados em casa</li></ul><a class="botao b-linha" data-msg="Primeiro cuidado" href="#contato">Quero este</a></article>
+    <article class="pacote destaque"><h3>Renovação</h3><p class="resumo">O mais procurado para resultado visível.</p><div class="preco">R$ 690<small> · 4 sessões</small></div><ul><li>Avaliação e registro da evolução</li><li>4 sessões do protocolo indicado</li><li>1 limpeza de pele de manutenção</li><li>Suporte pelo WhatsApp</li></ul><a class="botao b-cheio" data-msg="Renovação" href="#contato">Quero este</a></article>
+    <article class="pacote"><h3>Corpo leve</h3><p class="resumo">Para inchaço, retenção e contorno.</p><div class="preco">R$ 820<small> · 8 sessões</small></div><ul><li>Avaliação corporal e medidas</li><li>8 sessões de drenagem ou modeladora</li><li>Reavaliação no fim do pacote</li></ul><a class="botao b-linha" data-msg="Corpo leve" href="#contato">Quero este</a></article>
+  </div>
+  <p class="aviso">Valores e pacotes de exemplo. Confirme as condições com a profissional antes de contratar.</p>
+</section>
+
+<section id="sobre" class="sobre secao faixa" aria-labelledby="t-sobre">
+  <figure class="revela"><img id="foto" alt="" loading="lazy"><span class="ilustrativa" id="foto-ilustrativa">Imagem ilustrativa</span></figure>
+  <div class="revela">
+    <p class="rotulo">Sobre</p>
+    <h2 id="t-sobre">Cuidar da pele <em>é cuidar de você.</em></h2>
+    <p class="corpo">Acredito em tratamento honesto: indicar só o que a sua pele precisa, explicar cada etapa e acompanhar o resultado de perto. Aqui você é atendida com calma, num espaço pensado para você relaxar.</p>
+    <ul>
+      <li>Formação em estética e atualização constante em novas técnicas</li>
+      <li>Materiais descartáveis e protocolos de biossegurança</li>
+      <li>Atendimento com hora marcada, sem pressa</li>
+    </ul>
+  </div>
+</section>
+
+<section class="prova secao faixa" id="prova" hidden aria-labelledby="t-prova">
+  <p class="rotulo">Quem vem, recomenda</p>
+  <div class="grande" id="prova-nota"></div>
+  <div class="estrelas" aria-hidden="true">★★★★★</div>
+  <p id="t-prova"></p>
+  <a class="botao b-linha" id="prova-link" target="_blank" rel="noopener">Ver avaliações no Google</a>
+</section>
+
+<section id="duvidas" class="secao faixa" aria-labelledby="t-duv" style="background:var(--nevoa)">
+  <div class="cabeca revela">
+    <div><p class="rotulo">Dúvidas</p><h2 id="t-duv">Antes da <em>primeira sessão.</em></h2></div>
+  </div>
+  <div class="perguntas revela">
+    <details open><summary>A avaliação é obrigatória?</summary><p>Sim. É nela que a pele é analisada e o protocolo é escolhido. Assim você só faz o que realmente vai trazer resultado.</p></details>
+    <details><summary>Quantas sessões vou precisar?</summary><p>Depende da queixa e da resposta da sua pele. Na avaliação você já sai com uma estimativa de sessões e do intervalo entre elas.</p></details>
+    <details><summary>Os procedimentos doem?</summary><p>A maioria é confortável. Nos que causam algum incômodo, como o microagulhamento, usamos anestésico tópico e explicamos tudo antes.</p></details>
+    <details><summary>Posso fazer no verão ou depois de pegar sol?</summary><p>Alguns tratamentos pedem cuidado extra com o sol. A profissional indica a melhor época e o protetor certo para você.</p></details>
+    <details><summary>Gestantes podem fazer?</summary><p>Alguns procedimentos são liberados e outros não. Conte na avaliação para que o protocolo seja adaptado com segurança.</p></details>
+  </div>
+</section>
+
+<section id="contato" class="local secao faixa" aria-labelledby="t-local">
+  <div class="revela">
+    <p class="rotulo">Onde estamos</p>
+    <h2 id="t-local">Agende <em>o seu horário.</em></h2>
+    <dl>
+      <div data-se="endereco"><dt>Endereço</dt><dd data-campo="endereco"></dd></div>
+      <div data-se="cidade"><dt>Cidade</dt><dd data-campo="cidade"></dd></div>
+      <div data-se="telefone"><dt>Telefone</dt><dd data-campo="telefone"></dd></div>
+    </dl>
+    <div class="acoes"><a class="botao b-cheio" id="whats-contato" target="_blank" rel="noopener">Chamar no WhatsApp</a><a class="botao b-linha" id="link-mapa" target="_blank" rel="noopener">Ver no mapa</a></div>
+  </div>
+  <div class="mapa revela" id="mapa">
+    <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="450" fill="#f6eeec"/><path d="M0 120H600M0 260H600M120 0V450M330 0V450M470 0V450M0 400L600 300" stroke="#ead9d6" stroke-width="10" fill="none"/><path d="M300 230c40-40 90-30 90-80a90 90 0 0 0-180 0c0 50 90 80 90 80z" fill="#6d3f63"/><circle cx="300" cy="150" r="22" fill="#f2d9d6"/></svg>
+  </div>
+</section>
+
+<section class="chamada secao faixa">
+  <p class="rotulo">Um momento seu</p>
+  <h2>Que tal começar <em>esta semana?</em></h2>
+  <p>Faça a avaliação da pele em 1 minuto e receba a sugestão de tratamento.</p>
+  <a class="botao b-cheio" href="#diagnostico">Descobrir meu tratamento</a>
+</section>
+
+<footer class="faixa">
+  <strong data-nome></strong>
+  <p>Prévia demonstrativa criada para apresentação. Não é o site oficial da profissional.</p>
+  <p class="legal">Fotos ilustrativas (Unsplash). Procedimentos, valores e textos de exemplo. © {{ano}}</p>
+</footer>
+
+<a class="fixo" id="fixo" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 11.6a8.2 8.2 0 0 1-12.1 7.2L3.5 20l1.3-4.4a8.2 8.2 0 1 1 15.4-4Z"/></svg>
+  <span>Agendar</span>
+</a>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var d=$("#lead").dataset;
+  var limpo=function(v){v=(v||"").trim(); return v.indexOf("{{")===0?"":v};
+  var web=function(v){return /^https?:\/\//i.test(v||"")};
+  var foto=function(id,w){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w="+(w||900)+"&q=72"};
+  var nomeBruto=limpo(d.nome).split(/\s[|\-–]\s/)[0].trim();
+  var L={nome:(nomeBruto||"Estética"),categoria:limpo(d.categoria),cidade:limpo(d.cidade),endereco:limpo(d.endereco),telefone:limpo(d.telefone),
+    whatsapp:web(d.whatsapp)?d.whatsapp:"",maps:web(d.maps)?d.maps:"",nota:limpo(d.nota),avaliacoes:limpo(d.avaliacoes),foto:web(d.foto)?d.foto:""};
+
+  $$("[data-nome]").forEach(function(e){e.textContent=L.nome});
+  $$("[data-campo]").forEach(function(e){e.textContent=L[e.dataset.campo]||""});
+  $$("[data-se]").forEach(function(e){var v=e.querySelector("[data-campo]"); if(!v||!v.textContent.trim()) e.hidden=true});
+  $("#local").textContent=[L.categoria||"Estética",L.cidade].filter(Boolean).join(" · ");
+  if(!L.endereco) $("#mapa").hidden=true;
+  var h=$("#heroi"); h.src=foto("1570172619644-dfd03ed5d881",1200); h.fetchPriority="high"; h.alt="Foto ilustrativa de tratamento facial";
+  var f=$("#foto"); f.src=L.foto||foto("1706565029882-6f25f1d9af65",900); f.alt=L.foto?L.nome:"Foto ilustrativa de uma esteticista";
+  if(!L.foto) $("#foto-ilustrativa").textContent="Foto ilustrativa · aqui entra a sua foto"; else {$("#foto-ilustrativa").hidden=true}
+  var nota=parseFloat(L.nota.replace(",","."));
+  if(nota){$("#selo").hidden=false; $("#selo-nota").textContent=L.nota; $("#selo-txt").textContent=(L.avaliacoes?L.avaliacoes+" avaliações":"avaliação")+" no Google";
+    $("#prova").hidden=false; $("#prova-nota").textContent=L.nota; $("#t-prova").textContent=(L.avaliacoes?L.avaliacoes+" pessoas avaliaram":"Avaliação de")+" "+L.nome+" no Google.";
+    if(L.maps) $("#prova-link").href=L.maps; else $("#prova-link").hidden=true}
+
+  var faixa=["Limpeza de pele","Peeling","Microagulhamento","Drenagem linfática","Massagem modeladora","Design de sobrancelhas","Revitalização facial"];
+  $("#faixa").innerHTML=faixa.concat(faixa).map(function(t){return "<li>"+t+"</li>"}).join("");
+
+  /* procedimentos */
+  var P=[
+    ["rosto","Limpeza de pele","Extração cuidadosa, esfoliação e máscara calmante. A base de todo cuidado facial.","1h30","R$ 180","1761718209708-9ab9ba1c7252"],
+    ["rosto","Peeling","Renovação das camadas da pele para clarear manchas e uniformizar o tom.","50 min","R$ 220","1713085085470-fba013d67e65"],
+    ["rosto","Microagulhamento","Estimula o colágeno para tratar linhas finas, poros e cicatrizes de acne.","1h","R$ 350","1761718209852-54ca4210183e"],
+    ["rosto","Revitalização facial","Hidratação profunda e massagem para devolver o viço da pele cansada.","1h","R$ 200","1761718210055-e83ca7e2c9ad"],
+    ["corpo","Drenagem linfática","Movimentos suaves que reduzem o inchaço e a sensação de pernas pesadas.","1h","R$ 130","1639162906614-0603b0ae95fd"],
+    ["corpo","Massagem modeladora","Manobras firmes para trabalhar o contorno e a gordura localizada.","1h","R$ 140","1600334089648-b0d9d3028eb2"]];
+  $("#procs").innerHTML=P.map(function(p){return '<article class="proc" data-g="'+p[0]+'"><figure><img src="'+foto(p[5],640)+'" alt="Foto ilustrativa de '+p[1].toLowerCase()+'" loading="lazy"><span class="tag">'+(p[0]==="rosto"?"Rosto":"Corpo")+'</span></figure><div><h3>'+p[1]+'</h3><p>'+p[2]+'</p><span class="meta"><span>'+p[3]+' · a partir de '+p[4]+'</span><a data-proc="'+p[1]+'" href="#contato">Agendar</a></span></div></article>'}).join("");
+  $$(".filtros button").forEach(function(b){b.addEventListener("click",function(){
+    $$(".filtros button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+    $$(".proc").forEach(function(c){c.hidden=b.dataset.f!=="todos"&&c.dataset.g!==b.dataset.f})})});
+
+  /* sobre */
+  var t=$("#t-sobre"); t.textContent="Prazer, aqui é "; var em=document.createElement("em"); em.textContent=L.nome+"."; t.appendChild(em);
+
+  /* contatos */
+  var zap=function(txt){return L.whatsapp+"?text="+encodeURIComponent(txt)};
+  var base="Olá! Vi o site e quero agendar uma avaliação.";
+  if(L.whatsapp){
+    $("#fixo").href=zap(base); $("#whats-contato").href=zap(base);
+    $$("[data-msg]").forEach(function(a){a.href=zap(base+" Tenho interesse no pacote "+a.dataset.msg+"."); a.target="_blank"; a.rel="noopener"});
+    $$("[data-proc]").forEach(function(a){a.href=zap("Olá! Vi o site e quero agendar "+a.dataset.proc.toLowerCase()+"."); a.target="_blank"; a.rel="noopener"});
+  } else {$("#fixo").hidden=true; $("#whats-contato").hidden=true; $$("[data-msg]").forEach(function(a){a.removeAttribute("href"); a.setAttribute("aria-disabled","true")})}
+  if(L.maps) $("#link-mapa").href=L.maps; else $("#link-mapa").hidden=true;
+
+  /* avaliação da pele */
+  var resp={};
+  function etapa(n){$$(".etapa").forEach(function(e){var on=+e.dataset.e===n; e.hidden=!on; e.classList.toggle("entra",on)}); $$(".passinhos span").forEach(function(b,i){b.classList.toggle("feito",i<=n)})}
+  $$(".opcoes").forEach(function(g){g.addEventListener("click",function(e){var b=e.target.closest("button"); if(!b) return;
+    $$("[data-chave='"+g.dataset.chave+"'] button").forEach(function(x){x.setAttribute("aria-pressed",x===b)}); resp[g.dataset.chave]=b.dataset.v;
+    var n=+g.closest(".etapa").dataset.e; setTimeout(function(){if(n<2) etapa(n+1); else concluir()},220)})});
+  $$("[data-ir]").forEach(function(b){b.addEventListener("click",function(){etapa(+b.dataset.ir)})});
+  var PROTO={
+    "manchas":["Peeling + clareamento","Sessões de peeling espaçadas com ativos clareadores, sempre com proteção solar orientada."],
+    "acne e oleosidade":["Limpeza de pele + controle da oleosidade","Limpeza profunda para desobstruir os poros e ativos que equilibram a produção de óleo."],
+    "linhas e flacidez":["Microagulhamento","Estímulo de colágeno em sessões mensais para suavizar linhas e devolver firmeza."],
+    "pele sem viço":["Revitalização facial","Hidratação profunda, massagem e ativos antioxidantes para a pele voltar a brilhar."],
+    "inchaço e retenção":["Drenagem linfática","Sessões semanais para reduzir o inchaço e aliviar a sensação de peso."],
+    "medidas e contorno":["Massagem modeladora","Protocolo corporal com manobras firmes, combinado à drenagem quando indicado."]};
+  function concluir(){
+    var p=PROTO[resp.queixa];
+    var cuidado=resp.pele==="sensível"?" Como a sua pele é sensível, os ativos são escolhidos com cuidado extra.":"";
+    var txt="Olá! Fiz a avaliação no site e quero agendar.\nO que me incomoda: "+resp.queixa+"\nTipo de pele: "+resp.pele+"\nMelhor horário: "+resp.periodo+"\nProtocolo sugerido: "+p[0];
+    $("#proto").textContent=p[0]; $("#proto-porque").textContent=p[1]+cuidado; $("#diag-msg").textContent=txt;
+    var env=$("#diag-enviar");
+    if(L.whatsapp){env.href=zap(txt)} else {env.removeAttribute("href"); env.setAttribute("aria-disabled","true"); $("#diag-nota").textContent="Demonstração: no site da profissional, este botão abre o WhatsApp com a mensagem pronta."}
+    etapa(3);
+  }
+
+  /* mapa real */
+  if(L.endereco){
+    var ponto=L.maps.match(/!3d(-?[\d.]+)!4d(-?[\d.]+)/);
+    var m=document.createElement("iframe");
+    m.src="https://maps.google.com/maps?q="+encodeURIComponent(ponto?ponto[1]+","+ponto[2]:L.endereco)+"&z=16&hl=pt-BR&output=embed";
+    m.title="Mapa: "+L.endereco; m.loading="lazy";
+    $("#mapa").appendChild(m); $("#mapa").classList.add("real");
+  }
+
+  if("IntersectionObserver" in window){
+    var olho=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visto"); olho.unobserve(e.target)}})},{threshold:.12});
+    $$(".revela").forEach(function(e){olho.observe(e)});
+  } else $$(".revela").forEach(function(e){e.classList.add("visto")});
+})();
+</script>
+</body>
+</html>
